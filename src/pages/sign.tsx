@@ -48,8 +48,8 @@ const SignPage: NextPageWithLayout = () => {
   return (
     <>
       <NextSeo
-        title="PerpNation"
-        description="Criptic - React Next Web3 NFT Crypto Dashboard Template"
+        title="Leo Wallet Sign"
+        description="Sign Messages with the Leo Wallet"
       />
       <Trade>
         <form
