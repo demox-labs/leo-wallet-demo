@@ -4,7 +4,7 @@ import { NextSeo } from 'next-seo';
 import DashboardLayout from '@/layouts/dashboard/_dashboard';
 import Button from '@/components/ui/button';
 import routes from '@/config/routes';
-import { WalletMultiButton } from 'leo-wallet-adapter';
+import { WalletMultiButton } from '@demox-labs/leo-wallet-adapter';
 
 type SectionProps = {
   title: string;
