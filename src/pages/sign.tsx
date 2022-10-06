@@ -1,4 +1,5 @@
 import { useState, useEffect, FormEvent, SyntheticEvent } from 'react';
+import Image from '@/components/ui/image';
 import type { NextPageWithLayout } from '@/types';
 import cn from 'classnames';
 import { NextSeo } from 'next-seo';
@@ -6,11 +7,13 @@ import DashboardLayout from '@/layouts/dashboard/_dashboard';
 import Trade from '@/components/ui/trade';
 import { useWallet, Wallet, LeoWalletAdapter } from 'leo-wallet-adapter';
 import { Check } from '@/components/icons/check';
+import slug2 from '@/assets/images/lion_slug2.jpeg';
 
 const SignPage: NextPageWithLayout = () => {
   const { wallet, publicKey, sendTransaction, signAllTransactions } =
     useWallet();
   let [message, setMessage] = useState('');
+  let [slug, slugEm] = useState(false);
   console.log(publicKey);
 
   const handleSubmit = async (event: FormEvent) => {
@@ -21,12 +24,18 @@ const SignPage: NextPageWithLayout = () => {
     ).signMessage(bytes);
     const signature = new TextDecoder().decode(signatureBytes);
     setMessage('');
-    alert(signature);
+    console.log(signature);
+    slugEm(true);
   };
 
   const handleChange = (event: any) => {
     event.preventDefault();
     setMessage(event.currentTarget.value);
+  };
+
+  const handleSlug = () => {
+    slugEm(!slug);
+    console.log('you got slugged');
   };
 
   return (
@@ -58,6 +67,22 @@ const SignPage: NextPageWithLayout = () => {
           </label>
         </form>
       </Trade>
+      {slug && (
+        <dialog
+          className="dialog"
+          style={{ position: 'absolute', width: '100%', height: '100%' }}
+          open
+          onClick={handleSlug}
+        >
+          <Image
+            src={slug2}
+            alt="sluggins"
+            layout="fill"
+            objectFit="contain"
+            quality={100}
+          />
+        </dialog>
+      )}
     </>
   );
 };
