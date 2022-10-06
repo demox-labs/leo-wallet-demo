@@ -925,6 +925,18 @@
   resolved "https://registry.yarnpkg.com/@corex/deepmerge/-/deepmerge-4.0.29.tgz#af9debf07d7f6b0d2a9d04a266abf2c1418ed2f6"
   integrity sha512-q/yVUnqckA8Do+EvAfpy7RLdumnBy9ZsducMUtZTvpdbJC7azEf1hGtnYYxm0QfphYxjwggv6XtH64prvS1W+A==
 
+"@demox-labs/leo-wallet-adapter@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@demox-labs/leo-wallet-adapter/-/leo-wallet-adapter-0.0.4.tgz#29819884019bb487233caffde6d1c456ef569a19"
+  integrity sha512-T+/U640aasGPkEZl4lCQSGSPmZ+oTuS8ZagCSKf3ukpVjVSDfC7TXVwB9wM34igxV7xwgXOdzH+3rnHfiO/+1Q==
+  dependencies:
+    "@types/react" "^18.0.21"
+    "@types/react-dom" "^18.0.6"
+    eventemitter3 "^4.0.7"
+    nanoid "^3.1.30"
+    react "^18.2.0"
+    react-dom "^18.2.0"
+
 "@emotion/is-prop-valid@^0.8.2":
   version "0.8.8"
   resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz#db28b1c4368a259b60a97311d6a952d4fd01ac1a"
@@ -1905,6 +1917,13 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
+"@types/react-dom@^18.0.6":
+  version "18.0.6"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.6.tgz#36652900024842b74607a17786b6662dd1e103a1"
+  integrity sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-table@7.7.12":
   version "7.7.12"
   resolved "https://registry.yarnpkg.com/@types/react-table/-/react-table-7.7.12.tgz#628011d3cb695b07c678704a61f2f1d5b8e567fd"
@@ -1912,7 +1931,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
+"@types/react@*", "@types/react@^18.0.21":
   version "18.0.21"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.21.tgz#b8209e9626bb00a34c76f55482697edd2b43cc67"
   integrity sha512-7QUCOxvFgnD5Jk8ZKlUAhVcRj7GuJRjnjjiY/IUBWKgOlnvDvTMLD4RTF7NPyVmbRhNrbomZiOepg7M/2Kj1mA==
@@ -3270,7 +3289,7 @@ ethers@5.6.4:
     "@ethersproject/web" "5.6.0"
     "@ethersproject/wordlists" "5.6.0"
 
-eventemitter3@^4.0.1:
+eventemitter3@^4.0.1, eventemitter3@^4.0.7:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
@@ -4092,9 +4111,6 @@ language-tags@^1.0.5:
   integrity sha512-qJhlO9cGXi6hBGKoxEG/sKZDAHD5Hnu9Hs4WbOY3pCWXDhw0N8x1NenNzm2EnNLkLkk7J2SdxAkDSbb6ftT+UQ==
   dependencies:
     language-subtag-registry "~0.3.2"
-
-leo-wallet-adapter@../../leo-wallet-adapter/dist:
-  version "0.0.0"
 
 level-blobs@^0.1.7:
   version "0.1.7"
@@ -5054,6 +5070,14 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
+react-dom@^18.2.0:
+  version "18.2.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
+  integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
+  dependencies:
+    loose-envify "^1.1.0"
+    scheduler "^0.23.0"
+
 react-dropzone@12.0.5:
   version "12.0.5"
   resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-12.0.5.tgz#f9b557484a8afd6267f670f96a770ddd3948838b"
@@ -5460,6 +5484,13 @@ scheduler@^0.22.0:
   version "0.22.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.22.0.tgz#83a5d63594edf074add9a7198b1bae76c3db01b8"
   integrity sha512-6QAm1BgQI88NPYymgGQLCZgvep4FyePDWFpXVK+zNSUgHwlqpJy8VEh8Et0KxTACS4VWwMousBElAZOH9nkkoQ==
+  dependencies:
+    loose-envify "^1.1.0"
+
+scheduler@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.23.0.tgz#ba8041afc3d30eb206a487b6b384002e4e61fdfe"
+  integrity sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==
   dependencies:
     loose-envify "^1.1.0"
 
