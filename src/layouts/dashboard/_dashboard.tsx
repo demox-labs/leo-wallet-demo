@@ -8,13 +8,13 @@ import {
   WalletModalProvider,
   WalletMultiButton,
   WalletProvider,
-} from 'leo-wallet-adapter';
+} from '@demox-labs/leo-wallet-adapter';
 import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { useDrawer } from '@/components/drawer-views/context';
 import Sidebar from '@/layouts/dashboard/_sidebar';
 import React, { FC, useMemo } from 'react';
 
-require('leo-wallet-adapter/ui/styles.css');
+require('@demox-labs/leo-wallet-adapter/dist/ui/styles.css');
 
 function HeaderRightArea() {
   return (

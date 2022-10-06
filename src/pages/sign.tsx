@@ -5,7 +5,11 @@ import cn from 'classnames';
 import { NextSeo } from 'next-seo';
 import DashboardLayout from '@/layouts/dashboard/_dashboard';
 import Trade from '@/components/ui/trade';
-import { useWallet, Wallet, LeoWalletAdapter } from 'leo-wallet-adapter';
+import {
+  useWallet,
+  Wallet,
+  LeoWalletAdapter,
+} from '@demox-labs/leo-wallet-adapter';
 import { Check } from '@/components/icons/check';
 import slug2 from '@/assets/images/lion_slug2.jpeg';
 
