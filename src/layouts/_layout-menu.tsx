@@ -18,7 +18,7 @@ const MenuLinks = [
       { name: 'Minimal', href: '/minimal' },
     ],
   },
-  { name: 'Short', href: '/short' },
+  { name: 'Sign', href: '/sign' },
   { name: 'Positions', href: '/positions' },
 ];
 

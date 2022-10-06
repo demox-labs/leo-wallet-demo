@@ -17,9 +17,9 @@ const menuItems = [
     href: routes.gettingStarted,
   },
   {
-    name: 'Short',
+    name: 'Sign',
     icon: <ExchangeIcon />,
-    href: routes.short,
+    href: routes.sign,
   },
   {
     name: 'Positions',

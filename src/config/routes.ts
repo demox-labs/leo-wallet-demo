@@ -2,7 +2,7 @@ const routes = {
   home: '/index-old',
   minimal: '/minimal',
   gettingStarted: '/',
-  short: '/short',
+  sign: '/sign',
   positions: '/positions',
   swap: '/swap',
   liquidity: '/liquidity',

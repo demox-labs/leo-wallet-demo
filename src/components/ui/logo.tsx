@@ -4,7 +4,7 @@ import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { useIsDarkMode } from '@/lib/hooks/use-is-dark-mode';
 import lightLogo from '@/assets/images/logo.svg';
 import darkLogo from '@/assets/images/logo-white.svg';
-import shortKingsLogo from '@/assets/images/short-kings-logo.png';
+import slug from '@/assets/images/lion_slug.jpeg';
 
 const Logo: React.FC<React.SVGAttributes<{}>> = (props) => {
   const isMounted = useIsMounted();
@@ -18,10 +18,10 @@ const Logo: React.FC<React.SVGAttributes<{}>> = (props) => {
     >
       <span className="relative flex overflow-hidden">
         {isMounted && isDarkMode && (
-          <Image src={shortKingsLogo} alt="Short Kings" priority />
+          <Image src={slug} alt="Short Kings" priority />
         )}
         {isMounted && !isDarkMode && (
-          <Image src={shortKingsLogo} alt="Short Kings" priority />
+          <Image src={slug} alt="Short Kings" priority />
         )}
       </span>
     </AnchorLink>

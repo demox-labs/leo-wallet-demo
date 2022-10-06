@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import type { ReactElement, ReactNode } from 'react';
-import { PublicKey } from '@solana/web3.js';
 
 export type NextPageWithLayout<P = {}> = NextPage<P> & {
   authorization?: boolean;
@@ -12,7 +11,7 @@ export type CoinTypes = {
   code: string;
   name: string;
   price: number;
-  mint: PublicKey;
+  mint: string;
 };
 
 export interface Attachment {

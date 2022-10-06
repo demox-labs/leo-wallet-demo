@@ -2,37 +2,19 @@ import { useState } from 'react';
 import cn from 'classnames';
 import { useWindowScroll } from '@/lib/hooks/use-window-scroll';
 import Hamburger from '@/components/ui/hamburger';
-import SearchButton from '@/components/search/button';
+import {
+  LeoWalletAdapter,
+  WalletAdapterNetwork,
+  WalletModalProvider,
+  WalletMultiButton,
+  WalletProvider,
+} from 'leo-wallet-adapter';
 import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { useDrawer } from '@/components/drawer-views/context';
 import Sidebar from '@/layouts/dashboard/_sidebar';
 import React, { FC, useMemo } from 'react';
-import {
-  ConnectionProvider,
-  WalletProvider,
-} from '@solana/wallet-adapter-react';
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
-import {
-  CoinbaseWalletAdapter,
-  GlowWalletAdapter,
-  PhantomWalletAdapter,
-  SlopeWalletAdapter,
-  SolflareWalletAdapter,
-  SolletExtensionWalletAdapter,
-  SolletWalletAdapter,
-  TorusWalletAdapter,
-} from '@solana/wallet-adapter-wallets';
-import {
-  WalletModalProvider,
-  WalletMultiButton,
-} from '@solana/wallet-adapter-react-ui';
-import { clusterApiUrl } from '@solana/web3.js';
-import {
-  createDefaultAuthorizationResultCache,
-  SolanaMobileWalletAdapter,
-} from '@solana-mobile/wallet-adapter-mobile';
 
-require('@solana/wallet-adapter-react-ui/styles.css');
+require('leo-wallet-adapter/ui/styles.css');
 
 function HeaderRightArea() {
   return (
@@ -86,45 +68,32 @@ export default function Layout({
   const network = WalletAdapterNetwork.Mainnet;
 
   // You can also provide a custom RPC endpoint.
-  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  // const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 
   // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking and lazy loading --
   // Only the wallets you configure here will be compiled into your application, and only the dependencies
   // of wallets that your users connect to will be loaded.
   const wallets = useMemo(
-    () => [
-      new SolanaMobileWalletAdapter({
-        appIdentity: { name: 'Solana Wallet Adapter App' },
-        authorizationResultCache: createDefaultAuthorizationResultCache(),
-      }),
-      new CoinbaseWalletAdapter(),
-      new PhantomWalletAdapter(),
-      new GlowWalletAdapter(),
-      new SlopeWalletAdapter(),
-      new SolflareWalletAdapter({ network }),
-      new TorusWalletAdapter(),
-    ],
-    [network]
+    () => [new LeoWalletAdapter({ appName: 'Leo Demo App' })],
+    []
   );
 
   return (
     <div className="ltr:xl:pl-72 rtl:xl:pr-72 ltr:2xl:pl-80 rtl:2xl:pr-80">
-      <ConnectionProvider endpoint={endpoint}>
-        <WalletProvider wallets={wallets} autoConnect>
-          <WalletModalProvider>
-            <Header />
-            <Sidebar className="hidden xl:block" />
-            <main
-              className={cn(
-                'min-h-[100vh] px-4 pt-24 pb-16 sm:px-6 sm:pb-20 lg:px-8 xl:px-10 xl:pb-24 3xl:px-12',
-                contentClassName
-              )}
-            >
-              {children}
-            </main>
-          </WalletModalProvider>
-        </WalletProvider>
-      </ConnectionProvider>
+      <WalletProvider wallets={wallets} autoConnect>
+        <WalletModalProvider>
+          <Header />
+          <Sidebar className="hidden xl:block" />
+          <main
+            className={cn(
+              'min-h-[100vh] px-4 pt-24 pb-16 sm:px-6 sm:pb-20 lg:px-8 xl:px-10 xl:pb-24 3xl:px-12',
+              contentClassName
+            )}
+          >
+            {children}
+          </main>
+        </WalletModalProvider>
+      </WalletProvider>
     </div>
   );
 }
