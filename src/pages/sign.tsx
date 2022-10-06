@@ -34,8 +34,15 @@ const SignPage: NextPageWithLayout = () => {
   };
 
   const handleSlug = () => {
+    if (slug) {
+      let utterThis = new SpeechSynthesisUtterance(
+        'The slug lion has accepted your signature'
+      );
+      let voices = window.speechSynthesis.getVoices();
+      utterThis.voice = voices[7];
+      window.speechSynthesis.speak(utterThis);
+    }
     slugEm(!slug);
-    console.log('you got slugged');
   };
 
   return (
