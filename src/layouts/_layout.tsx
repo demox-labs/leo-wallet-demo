@@ -10,12 +10,12 @@ import {
   WalletModalProvider,
   WalletMultiButton,
   WalletProvider,
-} from 'leo-wallet-adapter';
+} from '@demox-labs/leo-wallet-adapter';
 import Hamburger from '@/components/ui/hamburger';
 import { MenuItems } from '@/layouts/_layout-menu';
 import React, { FC, useMemo } from 'react';
 
-require('leo-wallet-adapter/ui/styles.css');
+require('leo-wallet-adapter/dist/ui/styles.css');
 
 function HeaderRightArea() {
   const isMounted = useIsMounted();
