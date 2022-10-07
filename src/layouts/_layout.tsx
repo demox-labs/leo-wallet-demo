@@ -15,7 +15,7 @@ import Hamburger from '@/components/ui/hamburger';
 import { MenuItems } from '@/layouts/_layout-menu';
 import React, { FC, useMemo } from 'react';
 
-require('@demox-labs/dist/ui/styles.css');
+require('@demox-labs/leo-wallet-adapter/dist/ui/styles.css');
 
 function HeaderRightArea() {
   const isMounted = useIsMounted();
