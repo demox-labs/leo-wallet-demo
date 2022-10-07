@@ -5,11 +5,9 @@ import DashboardLayout from '@/layouts/dashboard/_dashboard';
 import Trade from '@/components/ui/trade';
 import {
   useWallet,
-  Wallet,
   LeoWalletAdapter,
   WalletNotConnectedError,
-  WalletMultiButton,
-} from 'leo-wallet-adapter';
+} from '@demox-labs/leo-wallet-adapter';
 import { Check } from '@/components/icons/check';
 import Button from '@/components/ui/button';
 import { useCopyToClipboard } from '@/lib/hooks/use-copy-to-clipboard';
