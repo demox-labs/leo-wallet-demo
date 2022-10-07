@@ -1,7 +1,5 @@
 import { useState, useEffect, FormEvent, SyntheticEvent } from 'react';
-import Image from '@/components/ui/image';
 import type { NextPageWithLayout } from '@/types';
-import cn from 'classnames';
 import { NextSeo } from 'next-seo';
 import DashboardLayout from '@/layouts/dashboard/_dashboard';
 import Trade from '@/components/ui/trade';
@@ -9,44 +7,49 @@ import {
   useWallet,
   Wallet,
   LeoWalletAdapter,
-} from '@demox-labs/leo-wallet-adapter';
+  WalletNotConnectedError,
+  WalletMultiButton,
+} from 'leo-wallet-adapter';
 import { Check } from '@/components/icons/check';
-import slug2 from '@/assets/images/lion_slug2.jpeg';
+import Button from '@/components/ui/button';
+import { useCopyToClipboard } from '@/lib/hooks/use-copy-to-clipboard';
+import { Copy } from '@/components/icons/copy';
 
 const SignPage: NextPageWithLayout = () => {
   const { wallet, publicKey, sendTransaction, signAllTransactions } =
     useWallet();
   let [message, setMessage] = useState('');
-  let [slug, slugEm] = useState(false);
+  let [signature, setSignature] = useState('');
+  let [copyButtonStatus, setCopyButtonStatus] = useState(false);
+  let [_, copyToClipboard] = useCopyToClipboard();
+  const handleCopyToClipboard = () => {
+    copyToClipboard(signature);
+    setCopyButtonStatus(true);
+    setTimeout(() => {
+      setCopyButtonStatus(copyButtonStatus);
+    }, 1500);
+  };
   console.log(publicKey);
 
-  const handleSubmit = async (event: FormEvent) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
+    if (!publicKey) throw new WalletNotConnectedError();
+
     const bytes = new TextEncoder().encode(message);
     const signatureBytes = await (
       wallet?.adapter as LeoWalletAdapter
     ).signMessage(bytes);
     const signature = new TextDecoder().decode(signatureBytes);
+    if (event.target?.elements[0]?.value) {
+      event.target.elements[0].value = '';
+    }
     setMessage('');
-    console.log(signature);
-    slugEm(true);
+    setSignature(signature);
   };
 
   const handleChange = (event: any) => {
     event.preventDefault();
     setMessage(event.currentTarget.value);
-  };
-
-  const handleSlug = () => {
-    if (slug) {
-      let utterThis = new SpeechSynthesisUtterance(
-        'The slug lion has accepted your signature'
-      );
-      let voices = window.speechSynthesis.getVoices();
-      utterThis.voice = voices[7];
-      window.speechSynthesis.speak(utterThis);
-    }
-    slugEm(!slug);
   };
 
   return (
@@ -57,7 +60,7 @@ const SignPage: NextPageWithLayout = () => {
       />
       <Trade>
         <form
-          className="relative flex w-full rounded-full md:w-auto lg:w-64 xl:w-80"
+          className="relative flex w-full rounded-full md:w-auto"
           noValidate
           role="search"
           onSubmit={async (event: SyntheticEvent<HTMLFormElement>) => {
@@ -74,26 +77,38 @@ const SignPage: NextPageWithLayout = () => {
             <span className="pointer-events-none absolute flex h-full w-8 cursor-pointer items-center justify-center text-gray-600 hover:text-gray-900 ltr:left-0 ltr:pl-2 rtl:right-0 rtl:pr-2 dark:text-gray-500 sm:ltr:pl-3 sm:rtl:pr-3">
               <Check className="h-4 w-4" />
             </span>
-            <input type="submit" value="Submit" />
+            <Button
+              disabled={!publicKey || message.length < 1}
+              type="submit"
+              color="white"
+              className="ml-4 shadow-card dark:bg-gray-700 md:h-10 md:px-5 xl:h-12 xl:px-7"
+            >
+              {!publicKey ? 'Connect Your Wallet' : 'Sign'}
+            </Button>
           </label>
         </form>
+        {signature && (
+          <div className="mt-5 inline-flex h-9 items-center rounded-full bg-white shadow-card dark:bg-light-dark xl:mt-6">
+            <div className="inline-flex h-full shrink-0 grow-0 items-center rounded-full bg-gray-900 px-4 text-xs text-white sm:text-sm">
+              Signature:
+            </div>
+            <div className="text w-28 grow-0 truncate text-ellipsis bg-center text-xs text-gray-500 ltr:pl-4 rtl:pr-4 dark:text-gray-300 sm:w-32 sm:text-sm">
+              {signature}
+            </div>
+            <div
+              className="flex cursor-pointer items-center px-4 text-gray-500 transition hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+              title="Copy Address"
+              onClick={handleCopyToClipboard}
+            >
+              {copyButtonStatus ? (
+                <Check className="h-auto w-3.5 text-green-500" />
+              ) : (
+                <Copy className="h-auto w-3.5" />
+              )}
+            </div>
+          </div>
+        )}
       </Trade>
-      {slug && (
-        <dialog
-          className="dialog"
-          style={{ position: 'absolute', width: '100%', height: '100%' }}
-          open
-          onClick={handleSlug}
-        >
-          <Image
-            src={slug2}
-            alt="sluggins"
-            layout="fill"
-            objectFit="contain"
-            quality={100}
-          />
-        </dialog>
-      )}
     </>
   );
 };

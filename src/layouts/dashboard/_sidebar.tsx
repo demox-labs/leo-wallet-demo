@@ -21,11 +21,6 @@ const menuItems = [
     icon: <ExchangeIcon />,
     href: routes.sign,
   },
-  {
-    name: 'Positions',
-    icon: <FarmIcon />,
-    href: routes.positions,
-  },
 ];
 
 type SidebarProps = {
@@ -41,7 +36,7 @@ export default function Sidebar({ className }: SidebarProps) {
         className
       )}
     >
-      <div className="relative flex h-24 items-center justify-between overflow-hidden px-6 py-4 2xl:px-8">
+      <div className="relative flex flex-col items-center justify-between px-6 py-4 2xl:px-8">
         <Logo />
         <div className="md:hidden">
           <Button
@@ -59,7 +54,7 @@ export default function Sidebar({ className }: SidebarProps) {
 
       <Scrollbar style={{ height: 'calc(100% - 96px)' }}>
         <div className="px-6 pb-5 2xl:px-8">
-          <div className="mt-12">
+          <div className="mt-2">
             {menuItems.map((item, index) => (
               <MenuItem
                 key={index}

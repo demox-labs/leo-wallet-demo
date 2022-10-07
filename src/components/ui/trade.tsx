@@ -22,10 +22,6 @@ const tradeMenu = [
     name: 'Sign',
     value: routes.sign,
   },
-  {
-    name: 'Positions',
-    value: routes.positions,
-  },
 ];
 
 function ActiveNavLink({ href, title, isActive, className }: any) {
