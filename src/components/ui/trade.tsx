@@ -22,6 +22,10 @@ const tradeMenu = [
     name: 'Sign',
     value: routes.sign,
   },
+  {
+    name: 'Decrypt',
+    value: routes.decrypt,
+  },
 ];
 
 function ActiveNavLink({ href, title, isActive, className }: any) {

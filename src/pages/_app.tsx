@@ -9,7 +9,6 @@ import ModalsContainer from '@/components/modal-views/container';
 import DrawersContainer from '@/components/drawer-views/container';
 import SettingsButton from '@/components/settings/settings-button';
 import SettingsDrawer from '@/components/settings/settings-drawer';
-import { WalletProvider } from '@/lib/hooks/use-connect';
 // base css file
 import 'swiper/css';
 import '@/assets/css/scrollbar.css';
@@ -40,13 +39,11 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
             enableSystem={false}
             defaultTheme="dark"
           >
-            <WalletProvider>
-              {getLayout(<Component {...pageProps} />)}
-              <SettingsButton />
-              <SettingsDrawer />
-              <ModalsContainer />
-              <DrawersContainer />
-            </WalletProvider>
+            {getLayout(<Component {...pageProps} />)}
+            <SettingsButton />
+            <SettingsDrawer />
+            <ModalsContainer />
+            <DrawersContainer />
           </ThemeProvider>
         </Hydrate>
         <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />

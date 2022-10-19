@@ -8,17 +8,11 @@ import { Close } from '@/components/icons/close';
 import { useModal, MODAL_VIEW } from '@/components/modal-views/context';
 // dynamic imports
 const SearchView = dynamic(() => import('@/components/search/view'));
-const ShareView = dynamic(() => import('@/components/nft/share-view'));
-const SelectWallet = dynamic(() => import('@/components/nft/select-wallet'));
 
 function renderModalContent(view: MODAL_VIEW | string) {
   switch (view) {
     case 'SEARCH_VIEW':
       return <SearchView />;
-    case 'SHARE_VIEW':
-      return <ShareView />;
-    case 'WALLET_CONNECT_VIEW':
-      return <SelectWallet />;
     default:
       return null;
   }

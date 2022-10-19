@@ -13,15 +13,16 @@ import Button from '@/components/ui/button';
 import { useCopyToClipboard } from '@/lib/hooks/use-copy-to-clipboard';
 import { Copy } from '@/components/icons/copy';
 
-const SignPage: NextPageWithLayout = () => {
-  const { wallet, publicKey, sendTransaction, signAllTransactions } =
+const DecryptPage: NextPageWithLayout = () => {
+  const { wallet, publicKey, sendTransaction, signAllTransactions, viewKey } =
     useWallet();
-  let [message, setMessage] = useState('');
-  let [signature, setSignature] = useState('');
+
+  let [cipherText, setCipherText] = useState('');
+  let [decryptedPayload, setDecryptedPayload] = useState('');
   let [copyButtonStatus, setCopyButtonStatus] = useState(false);
   let [_, copyToClipboard] = useCopyToClipboard();
   const handleCopyToClipboard = () => {
-    copyToClipboard(signature);
+    copyToClipboard(decryptedPayload);
     setCopyButtonStatus(true);
     setTimeout(() => {
       setCopyButtonStatus(copyButtonStatus);
@@ -32,28 +33,24 @@ const SignPage: NextPageWithLayout = () => {
     event.preventDefault();
     if (!publicKey) throw new WalletNotConnectedError();
 
-    const bytes = new TextEncoder().encode(message);
-    const signatureBytes = await (
-      wallet?.adapter as LeoWalletAdapter
-    ).signMessage(bytes);
-    const signature = new TextDecoder().decode(signatureBytes);
+    const decryptedPayload =
+      (await (wallet?.adapter as LeoWalletAdapter).decrypt(cipherText)) || '';
     if (event.target?.elements[0]?.value) {
       event.target.elements[0].value = '';
     }
-    setMessage('');
-    setSignature(signature);
+    setDecryptedPayload(decryptedPayload);
   };
 
   const handleChange = (event: any) => {
     event.preventDefault();
-    setMessage(event.currentTarget.value);
+    setCipherText(event.currentTarget.value);
   };
 
   return (
     <>
       <NextSeo
-        title="Leo Wallet Sign"
-        description="Sign Messages with the Leo Wallet"
+        title="Leo Wallet Decrypt"
+        description="Decrypt with the Leo Wallet"
       />
       <Trade>
         <form
@@ -67,7 +64,7 @@ const SignPage: NextPageWithLayout = () => {
           <label className="flex w-full items-center">
             <input
               className="h-11 w-full appearance-none rounded-lg border-2 border-gray-200 bg-transparent py-1 text-sm tracking-tighter text-gray-900 outline-none transition-all placeholder:text-gray-600 focus:border-gray-900 ltr:pr-5 ltr:pl-10 rtl:pr-10 dark:border-gray-600 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-500"
-              placeholder="Message to Sign"
+              placeholder="Cipher Text To Decrypt"
               autoComplete="off"
               onChange={(event: FormEvent<Element>) => handleChange(event)}
             />
@@ -75,26 +72,26 @@ const SignPage: NextPageWithLayout = () => {
               <Check className="h-4 w-4" />
             </span>
             <Button
-              disabled={!publicKey || message.length < 1}
+              disabled={!publicKey || cipherText.length < 1}
               type="submit"
               color="white"
               className="ml-4 shadow-card dark:bg-gray-700 md:h-10 md:px-5 xl:h-12 xl:px-7"
             >
-              {!publicKey ? 'Connect Your Wallet' : 'Sign'}
+              {!publicKey ? 'Connect Your Wallet' : 'Decrypt'}
             </Button>
           </label>
         </form>
-        {signature && (
+        {decryptedPayload && (
           <div className="mt-5 inline-flex h-9 items-center rounded-full bg-white shadow-card dark:bg-light-dark xl:mt-6">
             <div className="inline-flex h-full shrink-0 grow-0 items-center rounded-full bg-gray-900 px-4 text-xs text-white sm:text-sm">
-              Signature:
+              Decrypted:
             </div>
             <div className="text w-28 grow-0 truncate text-ellipsis bg-center text-xs text-gray-500 ltr:pl-4 rtl:pr-4 dark:text-gray-300 sm:w-32 sm:text-sm">
-              {signature}
+              {decryptedPayload}
             </div>
             <div
               className="flex cursor-pointer items-center px-4 text-gray-500 transition hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
-              title="Copy Address"
+              title="Copy Decrypted Text"
               onClick={handleCopyToClipboard}
             >
               {copyButtonStatus ? (
@@ -110,8 +107,8 @@ const SignPage: NextPageWithLayout = () => {
   );
 };
 
-SignPage.getLayout = function getLayout(page) {
+DecryptPage.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>;
 };
 
-export default SignPage;
+export default DecryptPage;

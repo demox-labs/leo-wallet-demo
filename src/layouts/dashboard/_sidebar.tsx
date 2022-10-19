@@ -9,6 +9,7 @@ import { HomeIcon } from '@/components/icons/home';
 import { FarmIcon } from '@/components/icons/farm';
 import { ExchangeIcon } from '@/components/icons/exchange';
 import { Close } from '@/components/icons/close';
+import { Unlocked } from '@/components/icons/unlocked';
 
 const menuItems = [
   {
@@ -20,6 +21,11 @@ const menuItems = [
     name: 'Sign',
     icon: <ExchangeIcon />,
     href: routes.sign,
+  },
+  {
+    name: 'Decrypt',
+    icon: <Unlocked />,
+    href: routes.decrypt,
   },
 ];
 

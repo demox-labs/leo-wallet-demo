@@ -3,6 +3,7 @@ const routes = {
   minimal: '/minimal',
   gettingStarted: '/',
   sign: '/sign',
+  decrypt: '/decrypt',
   positions: '/positions',
   swap: '/swap',
   liquidity: '/liquidity',

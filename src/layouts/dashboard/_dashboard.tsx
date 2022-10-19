@@ -3,18 +3,19 @@ import cn from 'classnames';
 import { useWindowScroll } from '@/lib/hooks/use-window-scroll';
 import Hamburger from '@/components/ui/hamburger';
 import {
+  AleoDAppDecryptPermission,
   LeoWalletAdapter,
   WalletAdapterNetwork,
   WalletModalProvider,
   WalletMultiButton,
   WalletProvider,
-} from '@demox-labs/leo-wallet-adapter';
+} from '@demox-labs/aleo-wallet-adapter';
 import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { useDrawer } from '@/components/drawer-views/context';
 import Sidebar from '@/layouts/dashboard/_sidebar';
 import React, { FC, useMemo } from 'react';
 
-require('@demox-labs/leo-wallet-adapter/dist/ui/styles.css');
+require('@demox-labs/aleo-wallet-adapter/dist/ui/styles.css');
 
 function HeaderRightArea() {
   return (
@@ -74,7 +75,12 @@ export default function Layout({
   // Only the wallets you configure here will be compiled into your application, and only the dependencies
   // of wallets that your users connect to will be loaded.
   const wallets = useMemo(
-    () => [new LeoWalletAdapter({ appName: 'Leo Demo App' })],
+    () => [
+      new LeoWalletAdapter({
+        appName: 'Leo Demo App',
+        decryptPermission: AleoDAppDecryptPermission.UponRequest,
+      }),
+    ],
     []
   );
 

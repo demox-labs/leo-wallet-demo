@@ -3,6 +3,7 @@
 const webpack = require('webpack');
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
+const path = require('path');
 
 module.exports = withPWA({
   reactStrictMode: true,
@@ -34,6 +35,17 @@ module.exports = withPWA({
         Buffer: ['buffer', 'Buffer'],
       }),
     ]);
+    const experiments = config.experiments || {};
+    Object.assign(experiments, {
+      asyncWebAssembly: true,
+      syncWebAssembly: true,
+    });
+    config.experiments = experiments;
+    const alias = config.resolve.alias || {};
+    Object.assign(alias, {
+      react$: require.resolve('react'),
+    });
+    config.resolve.alias = alias;
     return config;
   },
 });

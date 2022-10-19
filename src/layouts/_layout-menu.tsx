@@ -19,7 +19,7 @@ const MenuLinks = [
     ],
   },
   { name: 'Sign', href: '/sign' },
-  { name: 'Positions', href: '/positions' },
+  { name: 'Decrypt', href: '/decrypt' },
 ];
 
 export function MenuItems() {
