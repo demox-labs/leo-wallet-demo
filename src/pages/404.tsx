@@ -37,7 +37,7 @@ const ErrorPage: NextPageWithLayout = () => {
           Sorry, the page you are looking for might be renamed, removed, or
           might never exist.
         </p>
-        <AnchorLink href={routes?.home}>
+        <AnchorLink href={routes?.gettingStarted}>
           <Button shape="rounded">Back to Home</Button>
         </AnchorLink>
       </div>

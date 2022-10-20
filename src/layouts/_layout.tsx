@@ -5,6 +5,7 @@ import { useBreakpoint } from '@/lib/hooks/use-breakpoint';
 import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { useDrawer } from '@/components/drawer-views/context';
 import {
+  AleoDAppDecryptPermission,
   LeoWalletAdapter,
   WalletAdapterNetwork,
   WalletModalProvider,
@@ -101,7 +102,12 @@ export default function Layout({
   // Only the wallets you configure here will be compiled into your application, and only the dependencies
   // of wallets that your users connect to will be loaded.
   const wallets = useMemo(
-    () => [new LeoWalletAdapter({ appName: 'Leo Demo App' })],
+    () => [
+      new LeoWalletAdapter({
+        appName: 'Leo Demo App',
+        decryptPermission: AleoDAppDecryptPermission.UponRequest,
+      }),
+    ],
     []
   );
 
