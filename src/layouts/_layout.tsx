@@ -4,17 +4,15 @@ import SearchButton from '@/components/search/button';
 import { useBreakpoint } from '@/lib/hooks/use-breakpoint';
 import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { useDrawer } from '@/components/drawer-views/context';
-import {
-  AleoDAppDecryptPermission,
-  LeoWalletAdapter,
-  WalletAdapterNetwork,
-  WalletModalProvider,
-  WalletMultiButton,
-  WalletProvider,
-} from '@demox-labs/aleo-wallet-adapter';
 import Hamburger from '@/components/ui/hamburger';
 import { MenuItems } from '@/layouts/_layout-menu';
 import React, { FC, useMemo } from 'react';
+import { WalletAdapterNetwork } from '@demox-labs/aleo-wallet-adapter-base';
+import {
+  LeoWalletAdapter,
+  AleoDAppDecryptPermission,
+} from '@demox-labs/aleo-wallet-adapter-leo';
+import { WalletMultiButton } from '@demox-labs/aleo-wallet-adapter-reactui';
 
 require('@demox-labs/aleo-wallet-adapter/dist/ui/styles.css');
 
@@ -37,7 +35,7 @@ function HeaderRightArea() {
             <SearchButton variant="transparent" className="dark:text-white" />
           </div>
         )}
-        <WalletMultiButton className="bg-[#1253fa]" />
+        {/* <WalletMultiButton className="bg-[#1253fa]" /> */}
       </div>
 
       <div className="lg:hidden">
@@ -92,35 +90,12 @@ interface LayoutProps {}
 export default function Layout({
   children,
 }: React.PropsWithChildren<LayoutProps>) {
-  // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
-  const network = WalletAdapterNetwork.Mainnet;
-
-  // You can also provide a custom RPC endpoint.
-  // const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-
-  // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking and lazy loading --
-  // Only the wallets you configure here will be compiled into your application, and only the dependencies
-  // of wallets that your users connect to will be loaded.
-  const wallets = useMemo(
-    () => [
-      new LeoWalletAdapter({
-        appName: 'Leo Demo App',
-        decryptPermission: AleoDAppDecryptPermission.UponRequest,
-      }),
-    ],
-    []
-  );
-
   return (
     <div className="bg-light-100 dark:bg-dark-100 flex min-h-screen flex-col">
-      <WalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>
-          <Header />
-          <main className="mb-12 flex flex-grow flex-col pt-16 sm:pt-24">
-            {children}
-          </main>
-        </WalletModalProvider>
-      </WalletProvider>
+      <Header />
+      <main className="mb-12 flex flex-grow flex-col pt-16 sm:pt-24">
+        {children}
+      </main>
     </div>
   );
 }

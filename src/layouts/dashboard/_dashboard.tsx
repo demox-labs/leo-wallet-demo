@@ -2,20 +2,13 @@ import { useState } from 'react';
 import cn from 'classnames';
 import { useWindowScroll } from '@/lib/hooks/use-window-scroll';
 import Hamburger from '@/components/ui/hamburger';
-import {
-  AleoDAppDecryptPermission,
-  LeoWalletAdapter,
-  WalletAdapterNetwork,
-  WalletModalProvider,
-  WalletMultiButton,
-  WalletProvider,
-} from '@demox-labs/aleo-wallet-adapter';
 import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { useDrawer } from '@/components/drawer-views/context';
 import Sidebar from '@/layouts/dashboard/_sidebar';
 import React, { FC, useMemo } from 'react';
+import { WalletMultiButton } from '@demox-labs/aleo-wallet-adapter-reactui';
 
-require('@demox-labs/aleo-wallet-adapter/dist/ui/styles.css');
+require('@demox-labs/aleo-wallet-adapter-reactui/dist/styles.css');
 
 function HeaderRightArea() {
   return (
@@ -65,41 +58,18 @@ export default function Layout({
   children,
   contentClassName,
 }: React.PropsWithChildren<DashboardLayoutProps>) {
-  // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
-  const network = WalletAdapterNetwork.Mainnet;
-
-  // You can also provide a custom RPC endpoint.
-  // const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-
-  // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking and lazy loading --
-  // Only the wallets you configure here will be compiled into your application, and only the dependencies
-  // of wallets that your users connect to will be loaded.
-  const wallets = useMemo(
-    () => [
-      new LeoWalletAdapter({
-        appName: 'Leo Demo App',
-        decryptPermission: AleoDAppDecryptPermission.UponRequest,
-      }),
-    ],
-    []
-  );
-
   return (
     <div className="ltr:xl:pl-72 rtl:xl:pr-72 ltr:2xl:pl-80 rtl:2xl:pr-80">
-      <WalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>
-          <Header />
-          <Sidebar className="hidden xl:block" />
-          <main
-            className={cn(
-              'min-h-[100vh] px-4 pt-24 pb-16 sm:px-6 sm:pb-20 lg:px-8 xl:px-10 xl:pb-24 3xl:px-12',
-              contentClassName
-            )}
-          >
-            {children}
-          </main>
-        </WalletModalProvider>
-      </WalletProvider>
+      <Header />
+      <Sidebar className="hidden xl:block" />
+      <main
+        className={cn(
+          'min-h-[100vh] px-4 pt-24 pb-16 sm:px-6 sm:pb-20 lg:px-8 xl:px-10 xl:pb-24 3xl:px-12',
+          contentClassName
+        )}
+      >
+        {children}
+      </main>
     </div>
   );
 }

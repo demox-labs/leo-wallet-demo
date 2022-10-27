@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import type { NextPageWithLayout } from '@/types';
 import { NextSeo } from 'next-seo';
 import DashboardLayout from '@/layouts/dashboard/_dashboard';
 import Button from '@/components/ui/button';
 import routes from '@/config/routes';
-import { WalletMultiButton } from '@demox-labs/aleo-wallet-adapter';
+import { WalletMultiButton } from '@demox-labs/aleo-wallet-adapter-reactui';
 
 type SectionProps = {
   title: string;
@@ -68,7 +67,7 @@ const GettingStartedPage: NextPageWithLayout = () => {
           &bull; Now that you have your wallet setup with funds, connect it to
           our site by clicking the button below <br />
           <br />
-          <WalletMultiButton className="bg-[#154bf9]" />
+          {/* <WalletMultiButton className="bg-[#154bf9]" /> */}
         </Section>
         <Section title="STEP 4 - START SIGNING" bgColor="">
           &bull; Click on the button below to start signing your first Aleo

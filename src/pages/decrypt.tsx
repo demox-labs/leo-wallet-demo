@@ -3,15 +3,13 @@ import type { NextPageWithLayout } from '@/types';
 import { NextSeo } from 'next-seo';
 import DashboardLayout from '@/layouts/dashboard/_dashboard';
 import Trade from '@/components/ui/trade';
-import {
-  useWallet,
-  LeoWalletAdapter,
-  WalletNotConnectedError,
-} from '@demox-labs/aleo-wallet-adapter';
+import { useWallet } from '@demox-labs/aleo-wallet-adapter-react';
+import { LeoWalletAdapter } from '@demox-labs/aleo-wallet-adapter-leo';
 import { Check } from '@/components/icons/check';
 import Button from '@/components/ui/button';
 import { useCopyToClipboard } from '@/lib/hooks/use-copy-to-clipboard';
 import { Copy } from '@/components/icons/copy';
+import { WalletNotConnectedError } from '@demox-labs/aleo-wallet-adapter-base';
 
 const DecryptPage: NextPageWithLayout = () => {
   const { wallet, publicKey, sendTransaction, signAllTransactions, viewKey } =
