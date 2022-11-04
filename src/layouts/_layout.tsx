@@ -6,13 +6,8 @@ import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { useDrawer } from '@/components/drawer-views/context';
 import Hamburger from '@/components/ui/hamburger';
 import { MenuItems } from '@/layouts/_layout-menu';
-import React, { FC, useMemo } from 'react';
-import { WalletAdapterNetwork } from '@demox-labs/aleo-wallet-adapter-base';
-import {
-  LeoWalletAdapter,
-  AleoDAppDecryptPermission,
-} from '@demox-labs/aleo-wallet-adapter-leo';
-import { WalletMultiButton } from '@demox-labs/aleo-wallet-adapter-reactui';
+import React from 'react';
+import { WalletMultiButton } from '@demox-labs/aleo-wallet-adapter-reactui/';
 
 require('@demox-labs/aleo-wallet-adapter/dist/ui/styles.css');
 
@@ -35,7 +30,7 @@ function HeaderRightArea() {
             <SearchButton variant="transparent" className="dark:text-white" />
           </div>
         )}
-        {/* <WalletMultiButton className="bg-[#1253fa]" /> */}
+        <WalletMultiButton className="bg-[#1253fa]" />
       </div>
 
       <div className="lg:hidden">

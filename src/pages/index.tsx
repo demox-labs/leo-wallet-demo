@@ -67,7 +67,7 @@ const GettingStartedPage: NextPageWithLayout = () => {
           &bull; Now that you have your wallet setup with funds, connect it to
           our site by clicking the button below <br />
           <br />
-          {/* <WalletMultiButton className="bg-[#154bf9]" /> */}
+          <WalletMultiButton className="bg-[#154bf9]" />
         </Section>
         <Section title="STEP 4 - START SIGNING" bgColor="">
           &bull; Click on the button below to start signing your first Aleo

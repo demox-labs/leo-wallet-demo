@@ -14,10 +14,8 @@ import 'swiper/css';
 import '@/assets/css/scrollbar.css';
 import '@/assets/css/globals.css';
 import '@/assets/css/range-slider.css';
-import {
-  AleoDAppDecryptPermission,
-  LeoWalletAdapter,
-} from '@demox-labs/aleo-wallet-adapter-leo';
+import { LeoWalletAdapter } from '@demox-labs/aleo-wallet-adapter-leo';
+import { DecryptPermission } from '@demox-labs/aleo-wallet-adapter-base';
 import { WalletProvider } from '@demox-labs/aleo-wallet-adapter-react';
 import { WalletModalProvider } from '@demox-labs/aleo-wallet-adapter-reactui';
 
@@ -30,7 +28,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
     () => [
       new LeoWalletAdapter({
         appName: 'Leo Demo App',
-        decryptPermission: AleoDAppDecryptPermission.UponRequest,
+        decryptPermission: DecryptPermission.UponRequest,
       }),
     ],
     []
@@ -49,7 +47,11 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
       </Head>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <WalletProvider wallets={wallets} autoConnect>
+          <WalletProvider
+            wallets={wallets}
+            decryptPermission={DecryptPermission.UponRequest}
+            autoConnect
+          >
             <WalletModalProvider>
               <ThemeProvider
                 attribute="class"
