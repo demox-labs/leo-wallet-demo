@@ -28,7 +28,6 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
     () => [
       new LeoWalletAdapter({
         appName: 'Leo Demo App',
-        decryptPermission: DecryptPermission.UponRequest,
       }),
     ],
     []

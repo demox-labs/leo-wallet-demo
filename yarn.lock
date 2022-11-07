@@ -951,10 +951,10 @@
   dependencies:
     eventemitter3 "^4.0.7"
 
-"@demox-labs/aleo-wallet-adapter-leo@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@demox-labs/aleo-wallet-adapter-leo/-/aleo-wallet-adapter-leo-0.0.8.tgz#6b9ed3659c2e2d641d316c3376af8a9cfcf0e856"
-  integrity sha512-RPyp1uCYRVXXtfz4nPQKi2hsQD9OkXbmPplyPo98IbzCTMyy2zEDjwl39tT1hI3QpQcQ5SqrGxAeksdlhIfQRw==
+"@demox-labs/aleo-wallet-adapter-leo@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@demox-labs/aleo-wallet-adapter-leo/-/aleo-wallet-adapter-leo-0.0.10.tgz#e04b7bf080e2343950aeb3415d3a22cbc0a0fea7"
+  integrity sha512-KMMJE3HIU31EJ5B4kEaadLf0oAWf1yZ4Yh3qHRXoo5MdSC/W43v5jf60qtjnQWVGG/GbL9F2YJQx7SZeD9bxfw==
   dependencies:
     "@demox-labs/aleo-wallet-adapter-base" "^0.0.11"
     nanoid "^4.0.0"
