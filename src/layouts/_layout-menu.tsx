@@ -20,6 +20,7 @@ const MenuLinks = [
   },
   { name: 'Sign', href: '/sign' },
   { name: 'Decrypt', href: '/decrypt' },
+  { name: 'Records', href: '/records' },
 ];
 
 export function MenuItems() {

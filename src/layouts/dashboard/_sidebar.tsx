@@ -5,6 +5,7 @@ import Scrollbar from '@/components/ui/scrollbar';
 import Button from '@/components/ui/button';
 import routes from '@/config/routes';
 import { useDrawer } from '@/components/drawer-views/context';
+import { ChevronForward } from '@/components/icons/chevron-forward';
 import { HomeIcon } from '@/components/icons/home';
 import { FarmIcon } from '@/components/icons/farm';
 import { ExchangeIcon } from '@/components/icons/exchange';
@@ -26,6 +27,16 @@ const menuItems = [
     name: 'Decrypt',
     icon: <Unlocked />,
     href: routes.decrypt,
+  },
+  {
+    name: 'Records',
+    icon: <FarmIcon />,
+    href: routes.records,
+  },
+  {
+    name: 'Transfer',
+    icon: <ChevronForward />,
+    href: routes.transfer,
   },
 ];
 

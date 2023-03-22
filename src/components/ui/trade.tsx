@@ -5,8 +5,6 @@ import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import cn from 'classnames';
 import routes from '@/config/routes';
-import DashboardLayout from '@/layouts/dashboard/_dashboard';
-import Button from '@/components/ui/button';
 import ActiveLink from '@/components/ui/links/active-link';
 import AnchorLink from '@/components/ui/links/anchor-link';
 import { RangeIcon } from '@/components/icons/range-icon';
@@ -25,6 +23,14 @@ const tradeMenu = [
   {
     name: 'Decrypt',
     value: routes.decrypt,
+  },
+  {
+    name: 'Records',
+    value: routes.records,
+  },
+  {
+    name: 'Transfer',
+    value: routes.transfer,
   },
 ];
 
