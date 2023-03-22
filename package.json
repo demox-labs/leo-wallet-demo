@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rimraf \"{node_modules,.next,out.cache}\"",
     "delete-local-modules": "rm -rf ./node_modules/@demox-labs/aleo-wallet-adapter-react/node_modules && rm -rf ./node_modules/@demox-labs/aleo-wallet-adapter-reactui/node_modules",
-    "dev": "next dev",
+    "dev": "yarn delete-local-modules && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
