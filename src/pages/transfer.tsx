@@ -28,19 +28,13 @@ const TransactionPage: NextPageWithLayout = () => {
     event.preventDefault();
     if (!publicKey) throw new WalletNotConnectedError();
 
-    setDownloading(true);
-    await downloadAndStoreFiles();
-    const transferProver = await getSavedFile('TransferProver');
-    setDownloading(false);
-    const bytes: Uint8Array = transferProver.bytes;
     const inputs = [JSON.parse(record), toAddress, `${amount}u64`];
     const aleoTransaction = Transaction.createTransaction(
       publicKey,
       WalletAdapterNetwork.Testnet,
       'credits.aleo',
       'transfer',
-      inputs,
-      bytes.buffer
+      inputs
     );
 
     const txPayload =

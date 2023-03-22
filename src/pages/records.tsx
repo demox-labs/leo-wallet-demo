@@ -4,15 +4,20 @@ import { NextSeo } from 'next-seo';
 import DashboardLayout from '@/layouts/dashboard/_dashboard';
 import Trade from '@/components/ui/trade';
 import { useWallet } from '@demox-labs/aleo-wallet-adapter-react';
-import { LeoWalletAdapter } from '@demox-labs/aleo-wallet-adapter-leo';
 import { Check } from '@/components/icons/check';
 import Button from '@/components/ui/button';
 import { WalletNotConnectedError } from '@demox-labs/aleo-wallet-adapter-base';
 
-const RecordsPage: NextPageWithLayout = () => {
+interface RecordsPageProps {
+  initialProgram: string;
+}
+
+const RecordsPage: NextPageWithLayout<RecordsPageProps> = ({
+  initialProgram = '',
+}) => {
   const { wallet, publicKey, requestRecords } = useWallet();
 
-  let [program, setProgram] = useState('');
+  let [program, setProgram] = useState(initialProgram);
   let [recordsPayload, setRecordsPayload] = useState<JSX.Element | null>();
 
   const handleSubmit = async (event: any) => {
@@ -58,6 +63,7 @@ const RecordsPage: NextPageWithLayout = () => {
               placeholder="Program, ie: credits.aleo"
               autoComplete="off"
               onChange={(event: FormEvent<Element>) => handleChange(event)}
+              value={program}
             />
             <span className="pointer-events-none absolute flex h-full w-8 cursor-pointer items-center justify-center text-gray-600 hover:text-gray-900 ltr:left-0 ltr:pl-2 rtl:right-0 rtl:pr-2 dark:text-gray-500 sm:ltr:pl-3 sm:rtl:pr-3">
               <Check className="h-4 w-4" />

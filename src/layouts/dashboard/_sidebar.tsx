@@ -11,6 +11,7 @@ import { FarmIcon } from '@/components/icons/farm';
 import { ExchangeIcon } from '@/components/icons/exchange';
 import { Close } from '@/components/icons/close';
 import { Unlocked } from '@/components/icons/unlocked';
+import { OvenIcon } from '@/components/icons/oven';
 
 const menuItems = [
   {
@@ -37,6 +38,11 @@ const menuItems = [
     name: 'Transfer',
     icon: <ChevronForward />,
     href: routes.transfer,
+  },
+  {
+    name: 'Cookie Monster',
+    icon: <OvenIcon />,
+    href: routes.cookieMonster,
   },
 ];
 

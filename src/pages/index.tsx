@@ -8,18 +8,20 @@ import { WalletMultiButton } from '@demox-labs/aleo-wallet-adapter-reactui';
 type SectionProps = {
   title: string;
   bgColor: string;
+  sectionWidth?: string;
 };
 
-function Section({
+export function Section({
   title,
   bgColor,
   children,
+  sectionWidth,
 }: React.PropsWithChildren<SectionProps>) {
   return (
     <div className="mb-3">
       <div className={`rounded-lg ${bgColor}`}>
         <div className="relative flex items-center justify-between gap-4 p-4">
-          <div className="flex items-center ltr:mr-6 rtl:ml-6">
+          <div className={`items-center ltr:mr-6 rtl:ml-6 ${sectionWidth}`}>
             <div>
               <span className="block text-xs font-medium uppercase tracking-wider text-gray-900 dark:text-white sm:text-sm">
                 {title}

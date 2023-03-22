@@ -32,6 +32,10 @@ const tradeMenu = [
     name: 'Transfer',
     value: routes.transfer,
   },
+  {
+    name: 'CookieMonster',
+    value: routes.cookieMonster,
+  },
 ];
 
 function ActiveNavLink({ href, title, isActive, className }: any) {
