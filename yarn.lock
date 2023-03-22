@@ -950,6 +950,7 @@
   integrity sha512-CdtVq/RFXlSBuWIE418a1TNqvu17kWtjyBgNRte/6QnE7DhoNqsPdYWFE6lBWhW4mfwGhXnzI+YXt4+dzcJfNg==
   dependencies:
     "@demox-labs/aleo-wallet-adapter-base" "^0.0.12"
+    "@demox-labs/aleo-wallet-adapter-base" "^0.0.12"
 
 "@demox-labs/aleo-wallet-adapter-reactui@^0.0.24":
   version "0.0.24"
