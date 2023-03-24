@@ -17,9 +17,11 @@ import { downloadAndStoreFiles, getSavedFile } from '@/lib/db';
 const BakeCookiesPage: NextPageWithLayout = () => {
   const { wallet, publicKey } = useWallet();
 
-  let [toAddress, setToAddress] = useState('');
-  let [cookieType, setCookieType] = useState<number | undefined>();
-  let [cookieDeliciousness, setCookieDeliciousness] = useState('');
+  let [toAddress, setToAddress] = useState(
+    'aleo1kf3dgrz9lqyklz8kqfy0hpxxyt78qfuzshuhccl02a5x43x6nqpsaapqru'
+  );
+  let [cookieType, setCookieType] = useState<number | undefined>(1);
+  let [cookieDeliciousness, setCookieDeliciousness] = useState('3');
 
   let [txPayload, setTxPayload] = useState<string>('');
 
@@ -27,18 +29,15 @@ const BakeCookiesPage: NextPageWithLayout = () => {
     event.preventDefault();
     if (!publicKey) throw new WalletNotConnectedError();
 
-    await downloadAndStoreFiles();
-    const bakeCookieProver = await getSavedFile('BakeCookieProver');
-    const bytes: Uint8Array = bakeCookieProver.bytes;
     const inputs = [toAddress, `${cookieType}u64`, `${cookieDeliciousness}u64`];
-    console.log(inputs);
+    // console.log(inputs);
     const aleoTransaction = Transaction.createTransaction(
       publicKey,
       WalletAdapterNetwork.Testnet,
       'cookie_monster_14rwsw.aleo',
       'bake_cookie',
       inputs,
-      bytes.buffer
+      'https://aleo-public.s3.us-west-2.amazonaws.com/testnet3/bake_cookie_with_function_name.prover'
     );
 
     console.log(aleoTransaction);
