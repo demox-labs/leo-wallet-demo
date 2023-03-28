@@ -37,8 +37,6 @@ const TransactionPage: NextPageWithLayout = () => {
       inputs
     );
 
-    console.log(aleoTransaction);
-
     const txPayload =
       (await (wallet?.adapter as LeoWalletAdapter).requestTransaction(
         aleoTransaction

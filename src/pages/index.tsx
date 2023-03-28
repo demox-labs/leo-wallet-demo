@@ -10,7 +10,7 @@ type SectionProps = {
   bgColor: string;
 };
 
-function Section({
+export function Section({
   title,
   bgColor,
   children,
