@@ -40,9 +40,9 @@ const menuItems = [
     href: routes.transfer,
   },
   {
-    name: 'Bake Cookie',
+    name: 'Cookie Monster',
     icon: <OvenIcon />,
-    href: routes.bakeCookie,
+    href: routes.cookieMonster,
   },
 ];
 
