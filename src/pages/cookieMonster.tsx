@@ -112,12 +112,21 @@ const BakeCookiesPage: NextPageWithLayout = () => {
         description="Create and consume cookie records via the Leo Wallet"
       />
       <div className="mx-auto w-full px-4 pt-8 pb-14 sm:px-6 sm:pb-20 sm:pt-12 lg:px-8 xl:px-10 2xl:px-0">
-        <h2 className="mb-6 text-lg font-medium uppercase tracking-wider text-gray-900 dark:text-white sm:mb-10 sm:text-2xl">
+        <h2 className="mb-2 text-lg font-medium uppercase tracking-wider text-gray-900 dark:text-white sm:mb-6 sm:text-2xl">
           Cookie Monster example
         </h2>
+        <p className="mb-6 hidden w-1/2 text-xs tracking-tighter text-gray-600 dark:text-gray-400 sm:block">
+          This is an example of how to use the Leo Wallet to create and consume
+          records of an arbitrary program. <br />
+          The ability to create arbitrary programs, deploy them to the chainm
+          and execute them in a completely privacy preserving way is one of the
+          most powerful features of the Aleo blockchain and by utilizing the Leo
+          wallet it can be done easily and securely.
+        </p>
         <Section
           title="STEP 1 - Bake a cookie"
           bgColor="bg-white shadow-card dark:bg-light-dark"
+          sectionWidth="w-1/2"
         >
           <form
             className="relative flex w-full flex-col rounded-full md:w-auto"
@@ -199,9 +208,10 @@ const BakeCookiesPage: NextPageWithLayout = () => {
         <Section
           title="STEP 3 - EAT A COOKIE"
           bgColor="bg-white shadow-card dark:bg-light-dark"
+          sectionWidth="w-1/2"
         >
           Now that you have baked a cookie and have an unspent cookie record,
-          let&aposs eat it!
+          let&apos;s eat it!
           <form
             className="relative flex w-full flex-col rounded-full md:w-auto"
             noValidate

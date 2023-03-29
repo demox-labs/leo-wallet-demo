@@ -33,8 +33,8 @@ const tradeMenu = [
     value: routes.transfer,
   },
   {
-    name: 'BakeCookie',
-    value: routes.bakeCookie,
+    name: 'CookieMonster',
+    value: routes.cookieMonster,
   },
 ];
 

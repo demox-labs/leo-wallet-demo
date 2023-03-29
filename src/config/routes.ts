@@ -4,7 +4,7 @@ const routes = {
   decrypt: '/decrypt',
   records: '/records',
   transfer: '/transfer',
-  bakeCookie: '/bakeCookie',
+  cookieMonster: '/cookieMonster',
 };
 
 export default routes;
