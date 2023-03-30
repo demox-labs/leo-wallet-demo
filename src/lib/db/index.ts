@@ -15,6 +15,22 @@ const FILES = [
     name: 'TransferVerifier',
     url: 'https://aleo-public.s3.us-west-2.amazonaws.com/testnet3/transfer.verifier.db46e4c',
   },
+  {
+    name: 'BakeCookieProver',
+    url: 'https://aleo-public.s3.us-west-2.amazonaws.com/testnet3/bake_cookie.prover',
+  },
+  {
+    name: 'BakeCookieVerifier',
+    url: 'https://aleo-public.s3.us-west-2.amazonaws.com/testnet3/bake_cookie.verifier',
+  },
+  {
+    name: 'EatCookieProver',
+    url: 'https://aleo-public.s3.us-west-2.amazonaws.com/testnet3/eat_cookie.prover',
+  },
+  {
+    name: 'EatCookieVerifier',
+    url: 'https://aleo-public.s3.us-west-2.amazonaws.com/testnet3/eat_cookie.verifier',
+  },
 ];
 
 export async function getAllSavedFiles() {
