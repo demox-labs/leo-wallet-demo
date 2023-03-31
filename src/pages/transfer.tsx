@@ -12,10 +12,9 @@ import {
   WalletAdapterNetwork,
   WalletNotConnectedError,
 } from '@demox-labs/aleo-wallet-adapter-base';
-import { downloadAndStoreFiles, getSavedFile } from '@/lib/db';
 
 const TransactionPage: NextPageWithLayout = () => {
-  const { wallet, publicKey, requestTransaction } = useWallet();
+  const { wallet, publicKey } = useWallet();
 
   let [toAddress, setToAddress] = useState('');
   let [amount, setAmount] = useState<number | undefined>();

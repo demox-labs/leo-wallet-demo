@@ -12,12 +12,18 @@ import { ExchangeIcon } from '@/components/icons/exchange';
 import { Close } from '@/components/icons/close';
 import { Unlocked } from '@/components/icons/unlocked';
 import { OvenIcon } from '@/components/icons/oven';
+import { Sun } from '@/components/icons/sun';
 
 const menuItems = [
   {
     name: 'Getting Started',
     icon: <HomeIcon />,
     href: routes.gettingStarted,
+  },
+  {
+    name: 'Faucet',
+    icon: <Sun />,
+    href: routes.faucet,
   },
   {
     name: 'Sign',
