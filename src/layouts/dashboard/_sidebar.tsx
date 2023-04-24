@@ -21,11 +21,6 @@ const menuItems = [
     href: routes.gettingStarted,
   },
   {
-    name: 'Faucet',
-    icon: <Sun />,
-    href: routes.faucet,
-  },
-  {
     name: 'Sign',
     icon: <ExchangeIcon />,
     href: routes.sign,
