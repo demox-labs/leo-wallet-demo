@@ -21,7 +21,8 @@ const MenuLinks = [
   { name: 'Sign', href: '/sign' },
   { name: 'Decrypt', href: '/decrypt' },
   { name: 'Records', href: '/records' },
-  { name: 'Cookie Monster', href: '/cookieMonster' },
+  { name: 'Execute', href: '/execute' },
+  { name: 'Deploy', href: '/deploy' },
 ];
 
 export function MenuItems() {

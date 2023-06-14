@@ -2,7 +2,7 @@ import React, { useState, useEffect, FormEvent, SyntheticEvent } from 'react';
 import type { NextPageWithLayout } from '@/types';
 import { NextSeo } from 'next-seo';
 import DashboardLayout from '@/layouts/dashboard/_dashboard';
-import Trade from '@/components/ui/trade';
+import Base from '@/components/ui/base';
 import { useWallet } from '@demox-labs/aleo-wallet-adapter-react';
 import { LeoWalletAdapter } from '@demox-labs/aleo-wallet-adapter-leo';
 import { Check } from '@/components/icons/check';
@@ -53,7 +53,7 @@ const SignPage: NextPageWithLayout = () => {
         title="Leo Wallet Sign"
         description="Sign Messages with the Leo Wallet"
       />
-      <Trade>
+      <Base>
         <form
           className="relative flex w-full rounded-full md:w-auto"
           noValidate
@@ -103,7 +103,7 @@ const SignPage: NextPageWithLayout = () => {
             </div>
           </div>
         )}
-      </Trade>
+      </Base>
     </>
   );
 };

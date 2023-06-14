@@ -58,8 +58,6 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
                 defaultTheme="dark"
               >
                 {getLayout(<Component {...pageProps} />)}
-                <SettingsButton />
-                <SettingsDrawer />
                 <ModalsContainer />
                 <DrawersContainer />
               </ThemeProvider>

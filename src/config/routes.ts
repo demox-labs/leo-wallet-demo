@@ -4,7 +4,8 @@ const routes = {
   decrypt: '/decrypt',
   records: '/records',
   transfer: '/transfer',
-  cookieMonster: '/cookieMonster',
+  execute: '/execute',
+  deploy: '/deploy',
 };
 
 export default routes;

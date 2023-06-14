@@ -15,7 +15,7 @@ import { fadeInBottom } from '@/lib/framer-motion/fade-in-bottom';
 // dynamic import
 const Listbox = dynamic(() => import('@/components/ui/list-box'));
 
-const tradeMenu = [
+const baseMenu = [
   {
     name: 'Sign',
     value: routes.sign,
@@ -33,8 +33,12 @@ const tradeMenu = [
     value: routes.transfer,
   },
   {
-    name: 'CookieMonster',
-    value: routes.cookieMonster,
+    name: 'Execute',
+    value: routes.execute,
+  },
+  {
+    name: 'Deploy',
+    value: routes.deploy,
   },
 ];
 
@@ -59,27 +63,27 @@ function ActiveNavLink({ href, title, isActive, className }: any) {
   );
 }
 
-export default function Trade({ children }: React.PropsWithChildren<{}>) {
+export default function Base({ children }: React.PropsWithChildren<{}>) {
   const router = useRouter();
   const isMounted = useIsMounted();
   const breakpoint = useBreakpoint();
-  const currentPath = tradeMenu.findIndex(
+  const currentPath = baseMenu.findIndex(
     (item) => item.value === router.pathname
   );
-  let [selectedMenuItem, setSelectedMenuItem] = useState(tradeMenu[0]);
+  let [selectedMenuItem, setSelectedMenuItem] = useState(baseMenu[0]);
   function handleRouteOnSelect(path: string) {
     router.push(path);
   }
   useEffect(() => {
-    setSelectedMenuItem(tradeMenu[currentPath]);
+    setSelectedMenuItem(baseMenu[currentPath]);
   }, [currentPath]);
   return (
     <div className="pt-8 text-sm xl:pt-10">
-      <div className="mx-auto w-full max-w-lg rounded-lg bg-white p-5 pt-4 shadow-card dark:bg-light-dark xs:p-6 xs:pt-5">
+      <div className="mx-auto w-full rounded-lg bg-white p-5 pt-4 shadow-card dark:bg-light-dark xs:p-6 xs:pt-5">
         <nav className="mb-5 min-h-[40px] border-b border-dashed border-gray-200 pb-4 uppercase tracking-wider dark:border-gray-700 xs:mb-6 xs:pb-5 xs:tracking-wide">
           {isMounted && ['xs'].indexOf(breakpoint) !== -1 && (
             <Listbox
-              options={tradeMenu}
+              options={baseMenu}
               selectedOption={selectedMenuItem}
               onChange={setSelectedMenuItem}
               onSelect={(path) => handleRouteOnSelect(path)}
@@ -99,7 +103,7 @@ export default function Trade({ children }: React.PropsWithChildren<{}>) {
             </Listbox>
           )}
           <div className="hidden items-center justify-between text-gray-600 dark:text-gray-400 sm:flex">
-            {tradeMenu.map((item) => (
+            {baseMenu.map((item) => (
               <ActiveNavLink
                 key={item.name}
                 href={item.value}
