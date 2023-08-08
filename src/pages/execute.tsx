@@ -50,7 +50,7 @@ const Execute: NextPageWithLayout = () => {
     event.preventDefault();
     if (!publicKey) throw new WalletNotConnectedError();
 
-    const inputsArray = inputs.split('\n');
+    const inputsArray = inputs.split('\n').filter((input) => input !== '');
     const parsedInputs = inputsArray.map((input) => tryParseJSON(input));
 
     const aleoTransaction = Transaction.createTransaction(
