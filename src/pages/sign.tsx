@@ -12,8 +12,7 @@ import { Copy } from '@/components/icons/copy';
 import { WalletNotConnectedError } from '@demox-labs/aleo-wallet-adapter-base';
 
 const SignPage: NextPageWithLayout = () => {
-  const { wallet, publicKey, sendTransaction, signAllTransactions } =
-    useWallet();
+  const { wallet, publicKey } = useWallet();
   let [message, setMessage] = useState('');
   let [signature, setSignature] = useState('');
   let [copyButtonStatus, setCopyButtonStatus] = useState(false);

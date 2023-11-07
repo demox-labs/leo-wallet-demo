@@ -19,7 +19,7 @@ const TransactionPage: NextPageWithLayout = () => {
   let [toAddress, setToAddress] = useState('');
   let [amount, setAmount] = useState<number | undefined>();
   let [record, setRecord] = useState('');
-  let [fee, setFee] = useState<number | undefined>();
+  let [fee, setFee] = useState<number | undefined>(25_000);
   let [transactionId, setTransactionId] = useState<string | undefined>();
   let [status, setStatus] = useState<string | undefined>();
 
@@ -48,7 +48,7 @@ const TransactionPage: NextPageWithLayout = () => {
       publicKey,
       WalletAdapterNetwork.Testnet,
       'credits.aleo',
-      'transfer',
+      'transfer_private',
       inputs,
       fee!
     );
@@ -123,7 +123,7 @@ const TransactionPage: NextPageWithLayout = () => {
           <label className="flex w-full items-center py-4">
             <input
               className="h-11 w-full appearance-none rounded-lg border-2 border-gray-200 bg-transparent py-1 text-sm tracking-tighter text-gray-900 outline-none transition-all placeholder:text-gray-600 focus:border-gray-900 ltr:pr-5 ltr:pl-10 rtl:pr-10 dark:border-gray-600 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-500"
-              placeholder="Amount (in gates): ie, 101"
+              placeholder="Amount (in microcredits): ie, 101"
               autoComplete="off"
               onChange={(event: FormEvent<Element>) =>
                 handleAmountChange(event)
