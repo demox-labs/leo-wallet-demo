@@ -12,14 +12,6 @@ import {
   WalletNotConnectedError,
 } from '@demox-labs/aleo-wallet-adapter-base';
 
-function tryParseJSON(input: string): string | object {
-  try {
-    return JSON.parse(input);
-  } catch (error) {
-    return input;
-  }
-}
-
 const Deploy: NextPageWithLayout = () => {
   const { wallet, publicKey } = useWallet();
 
@@ -27,6 +19,7 @@ const Deploy: NextPageWithLayout = () => {
   let [fee, setFee] = useState<number | undefined>();
   let [transactionId, setTransactionId] = useState<string | undefined>();
   let [status, setStatus] = useState<string | undefined>();
+  let [feePrivate, setFeeVisibility] = useState(false);
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout | undefined;
@@ -52,7 +45,8 @@ const Deploy: NextPageWithLayout = () => {
       publicKey,
       WalletAdapterNetwork.Testnet,
       program,
-      fee!
+      fee!,
+      feePrivate // Use public fee
     );
 
     const txId =
@@ -106,6 +100,15 @@ const Deploy: NextPageWithLayout = () => {
                 setFee(value);
               }}
               value={fee ?? ''}
+            />
+          </label>
+          <label className="flex items-center py-4">
+            <span className="mr-8 text-sm text-white">Public Fee</span>
+            <input
+              type="checkbox"
+              className="form-checkbox h-4 w-4 text-gray-700 transition duration-150 ease-in-out"
+              onChange={() => setFeeVisibility(!feePrivate)}
+              checked={!feePrivate}
             />
           </label>
           <div className="flex items-center justify-center">
