@@ -46,7 +46,7 @@ const TransactionPage: NextPageWithLayout = () => {
     const inputs = [JSON.parse(record), toAddress, `${amount}u64`];
     const aleoTransaction = Transaction.createTransaction(
       publicKey,
-      WalletAdapterNetwork.Testnet,
+      WalletAdapterNetwork.TestnetBeta,
       'credits.aleo',
       'transfer_private',
       inputs,

@@ -43,7 +43,7 @@ const Deploy: NextPageWithLayout = () => {
 
     const aleoDeployment = new Deployment(
       publicKey,
-      WalletAdapterNetwork.Testnet,
+      WalletAdapterNetwork.TestnetBeta,
       program,
       fee!,
       feePrivate // Use public fee

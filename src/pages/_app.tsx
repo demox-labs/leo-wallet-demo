@@ -15,7 +15,10 @@ import '@/assets/css/scrollbar.css';
 import '@/assets/css/globals.css';
 import '@/assets/css/range-slider.css';
 import { LeoWalletAdapter } from '@demox-labs/aleo-wallet-adapter-leo';
-import { DecryptPermission } from '@demox-labs/aleo-wallet-adapter-base';
+import {
+  DecryptPermission,
+  WalletAdapterNetwork,
+} from '@demox-labs/aleo-wallet-adapter-base';
 import { WalletProvider } from '@demox-labs/aleo-wallet-adapter-react';
 import { WalletModalProvider } from '@demox-labs/aleo-wallet-adapter-reactui';
 
@@ -48,7 +51,9 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         <Hydrate state={pageProps.dehydratedState}>
           <WalletProvider
             wallets={wallets}
-            decryptPermission={DecryptPermission.UponRequest}
+            network={WalletAdapterNetwork.TestnetBeta}
+            decryptPermission={DecryptPermission.OnChainHistory}
+            programs={['credits.aleo']}
             autoConnect
           >
             <WalletModalProvider>
