@@ -14,7 +14,7 @@
   "dependencies": {
     "@demox-labs/aleo-sdk": "^0.3.7",
     "@demox-labs/aleo-wallet-adapter-base": "^0.0.21",
-    "@demox-labs/aleo-wallet-adapter-leo": "^0.0.20",
+    "@demox-labs/aleo-wallet-adapter-leo": "^0.0.22",
     "@demox-labs/aleo-wallet-adapter-react": "^0.0.20",
     "@demox-labs/aleo-wallet-adapter-reactui": "^0.0.33",
     "@headlessui/react": "1.6.5",
