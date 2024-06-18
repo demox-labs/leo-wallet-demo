@@ -20,8 +20,8 @@ module.exports = {
       colors: {
         brand: 'rgb(var(--color-brand) / <alpha-value>)',
         body: '#fcfcfc',
-        dark: '#0D1321',
-        'light-dark': '#171e2e',
+        dark: '#0d0d11',
+        'light-dark': '#141417',
       },
       spacing: {
         13: '3.375rem',

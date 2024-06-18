@@ -30,7 +30,7 @@ function HeaderRightArea() {
             <SearchButton variant="transparent" className="dark:text-white" />
           </div>
         )}
-        <WalletMultiButton className="bg-[#1253fa]" />
+        <WalletMultiButton className="bg-[#634CFF]" />
       </div>
 
       <div className="lg:hidden">

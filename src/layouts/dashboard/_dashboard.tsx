@@ -13,7 +13,7 @@ require('@demox-labs/aleo-wallet-adapter-reactui/dist/styles.css');
 function HeaderRightArea() {
   return (
     <div className="relative order-last flex shrink-0 items-center gap-3 sm:gap-6 lg:gap-8">
-      <WalletMultiButton className="bg-[#1253fa]" />
+      <WalletMultiButton className="bg-[#634CFF]" />
     </div>
   );
 }

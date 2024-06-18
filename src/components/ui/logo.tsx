@@ -4,7 +4,7 @@ import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { useIsDarkMode } from '@/lib/hooks/use-is-dark-mode';
 import lightLogo from '@/assets/images/logo.svg';
 import darkLogo from '@/assets/images/logo-white.svg';
-import logo from '@/assets/images/icon-128.png';
+import logo from '@/assets/images/icon.svg';
 
 const Logo: React.FC<React.SVGAttributes<{}>> = (props) => {
   const isMounted = useIsMounted();
@@ -13,7 +13,7 @@ const Logo: React.FC<React.SVGAttributes<{}>> = (props) => {
   return (
     <AnchorLink
       href="https://leo.app"
-      className="flex w-28 outline-none sm:w-32 4xl:w-36"
+      className="w-128 sm:w-150 4xl:w-165 flex py-4 outline-none"
       {...props}
     >
       <span className="relative flex overflow-hidden">
