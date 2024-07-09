@@ -46,6 +46,10 @@ module.exports = withPWA({
       react$: require.resolve('react'),
     });
     config.resolve.alias = alias;
+
+    config.resolve.symlinks = true;
+    config.resolve.modules.push(path.resolve('./node_modules'));
+
     return config;
   },
 });
