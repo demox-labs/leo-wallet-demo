@@ -998,10 +998,10 @@
   dependencies:
     eventemitter3 "^4.0.7"
 
-"@demox-labs/aleo-wallet-adapter-leo@^0.0.22":
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/@demox-labs/aleo-wallet-adapter-leo/-/aleo-wallet-adapter-leo-0.0.22.tgz#f2260d63c3e4a615ccf5b8914bbf5a99bf71bb02"
-  integrity sha512-Am1J+n0VQSdv5Fff68jno1zaNp/xA/YE5ivoCuJrkmM73BT+FG7WDS3nOwwNsbHR3HviBCxBksXDP2pA33BA8A==
+"@demox-labs/aleo-wallet-adapter-leo@^0.0.23":
+  version "0.0.23"
+  resolved "https://registry.yarnpkg.com/@demox-labs/aleo-wallet-adapter-leo/-/aleo-wallet-adapter-leo-0.0.23.tgz#6cb581a03e3e25baf655b0e362c2ed8beef9a857"
+  integrity sha512-s9kSNcfjvmwH5yrgB2qVpjNA/g8E59DsPoTGM4j52ys5cTUMFRvjYUwJf+yX/9dWF/v7aCDbjD2Vf0A3fSceMg==
   dependencies:
     "@demox-labs/aleo-wallet-adapter-base" "^0.0.21"
     nanoid "^4.0.0"
@@ -2533,14 +2533,14 @@ browserify-fs@^1.0.0:
     levelup "^0.18.2"
 
 browserslist@^4.20.3, browserslist@^4.22.2, browserslist@^4.23.0:
-  version "4.23.1"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.23.1.tgz#ce4af0534b3d37db5c1a4ca98b9080f985041e96"
-  integrity sha512-TUfofFo/KsK/bWZ9TWQ5O26tsWW4Uhmt8IYklbnUa70udB6P2wA7w7o4PY4muaEPBQaAX+CEnmmIA41NVHtPVw==
+  version "4.23.2"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.23.2.tgz#244fe803641f1c19c28c48c4b6ec9736eb3d32ed"
+  integrity sha512-qkqSyistMYdxAcw+CzbZwlBy8AGmS/eEWs+sEV5TnLRGDOL+C5M2EnH6tlZyg0YoAxGJAFKh61En9BR941GnHA==
   dependencies:
-    caniuse-lite "^1.0.30001629"
-    electron-to-chromium "^1.4.796"
+    caniuse-lite "^1.0.30001640"
+    electron-to-chromium "^1.4.820"
     node-releases "^2.0.14"
-    update-browserslist-db "^1.0.16"
+    update-browserslist-db "^1.1.0"
 
 buffer-from@^1.0.0:
   version "1.1.2"
@@ -2583,10 +2583,10 @@ camelize@^1.0.0:
   resolved "https://registry.yarnpkg.com/camelize/-/camelize-1.0.1.tgz#89b7e16884056331a35d6b5ad064332c91daa6c3"
   integrity sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==
 
-caniuse-lite@^1.0.30001332, caniuse-lite@^1.0.30001335, caniuse-lite@^1.0.30001629:
-  version "1.0.30001640"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001640.tgz#32c467d4bf1f1a0faa63fc793c2ba81169e7652f"
-  integrity sha512-lA4VMpW0PSUrFnkmVuEKBUovSWKhj7puyCg8StBChgu298N1AtuF1sKWEvfDuimSEDbhlb/KqPKC3fs1HbuQUA==
+caniuse-lite@^1.0.30001332, caniuse-lite@^1.0.30001335, caniuse-lite@^1.0.30001640:
+  version "1.0.30001641"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001641.tgz#3572862cd18befae3f637f2a1101cc033c6782ac"
+  integrity sha512-Phv5thgl67bHYo1TtMY/MurjkHhV4EDaCosezRXgZ8jzA/Ub+wjxAvbGvjoFENStinwi5kCyOYV3mi5tOGykwA==
 
 chalk@^2.4.2:
   version "2.4.2"
@@ -3047,9 +3047,9 @@ detective@^5.2.1:
     minimist "^1.2.6"
 
 dexie@*:
-  version "4.0.7"
-  resolved "https://registry.yarnpkg.com/dexie/-/dexie-4.0.7.tgz#c92e5032245fc075de58c636238a82ee3ff9fedb"
-  integrity sha512-M+Lo6rk4pekIfrc2T0o2tvVJwL6EAAM/B78DNfb8aaxFVoI1f8/rz5KTxuAnApkwqTSuxx7T5t0RKH7qprapGg==
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/dexie/-/dexie-4.0.8.tgz#21fca70686bdaa1d86fad45b6b19316f6a084a1d"
+  integrity sha512-1G6cJevS17KMDK847V3OHvK2zei899GwpDiqfEXHP1ASvme6eWJmAp9AU4s1son2TeGkWmC0g3y8ezOBPnalgQ==
 
 dexie@^3.2.3:
   version "3.2.7"
@@ -3118,10 +3118,10 @@ ejs@^3.1.6:
   dependencies:
     jake "^10.8.5"
 
-electron-to-chromium@^1.4.796:
-  version "1.4.820"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.820.tgz#1195660c157535392a09442540a08ee63fea8c40"
-  integrity sha512-kK/4O/YunacfboFEk/BDf7VO1HoPmDudLTJAU9NmXIOSjsV7qVIX3OrI4REZo0VmdqhcpUcncQc6N8Q3aEXlHg==
+electron-to-chromium@^1.4.820:
+  version "1.4.823"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.823.tgz#38587f7aa55bed14930f04091dfc65c39a3d8bd7"
+  integrity sha512-4h+oPeAiGQOHFyUJOqpoEcPj/xxlicxBzOErVeYVMMmAiXUXsGpsFd0QXBMaUUbnD8hhSfLf9uw+MlsoIA7j5w==
 
 elliptic@6.5.4:
   version "6.5.4"
@@ -6472,9 +6472,9 @@ terser-webpack-plugin@^5.3.3:
     terser "^5.26.0"
 
 terser@^5.0.0, terser@^5.26.0:
-  version "5.31.1"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.31.1.tgz#735de3c987dd671e95190e6b98cfe2f07f3cf0d4"
-  integrity sha512-37upzU1+viGvuFtBo9NPufCb9dwM0+l9hMxYyWfBA+fbwrPqNJAhbZ6W47bBFnZHKHTUBnMvi87434qq+qnxOg==
+  version "5.31.2"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.31.2.tgz#b5ca188107b706084dca82f988089fa6102eba11"
+  integrity sha512-LGyRZVFm/QElZHy/CPr/O4eNZOZIzsrQ92y4v9UJe/pFJjypje2yI3C2FmPtvUEnhadlSbmG2nXtdcjHOjCfxw==
   dependencies:
     "@jridgewell/source-map" "^0.3.3"
     acorn "^8.8.2"
@@ -6701,7 +6701,7 @@ upath@^1.2.0:
   resolved "https://registry.yarnpkg.com/upath/-/upath-1.2.0.tgz#8f66dbcd55a883acdae4408af8b035a5044c1894"
   integrity sha512-aZwGpamFO61g3OlfT7OQCHqhGnW43ieH9WZeP7QxN/G/jS4jfqUkZxoryvJgVPEcrl5NL/ggHsSmLMHuH64Lhg==
 
-update-browserslist-db@^1.0.16:
+update-browserslist-db@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/update-browserslist-db/-/update-browserslist-db-1.1.0.tgz#7ca61c0d8650766090728046e416a8cde682859e"
   integrity sha512-EdRAaAyk2cUE1wOf2DkEhzxqOQvFOoRJFNS6NeyJ01Gp2beMRpBAINjM2iDXE3KCuKhwnvHIQCJm6ThL2Z+HzQ==
