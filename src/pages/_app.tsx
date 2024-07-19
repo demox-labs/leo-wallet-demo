@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import Head from 'next/head';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { isMobile as reactDetectIsMobile } from 'react-device-detect';
 import { ThemeProvider } from 'next-themes';
 import ModalsContainer from '@/components/modal-views/container';
 import DrawersContainer from '@/components/drawer-views/container';
@@ -31,6 +32,8 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
     () => [
       new LeoWalletAdapter({
         appName: 'Leo Demo App',
+        isMobile: reactDetectIsMobile,
+        mobileWebviewUrl: 'https://demo.leo.app',
       }),
     ],
     []
