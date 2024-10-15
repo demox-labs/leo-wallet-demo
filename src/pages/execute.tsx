@@ -55,11 +55,12 @@ const Execute: NextPageWithLayout = () => {
 
     const aleoTransaction = Transaction.createTransaction(
       publicKey,
-      WalletAdapterNetwork.TestnetBeta,
+      'mainnet',
       programId,
       functionName,
       parsedInputs,
-      fee!
+      fee!,
+      false
     );
 
     const txId =

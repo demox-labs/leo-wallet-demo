@@ -54,10 +54,10 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         <Hydrate state={pageProps.dehydratedState}>
           <WalletProvider
             wallets={wallets}
-            network={WalletAdapterNetwork.TestnetBeta}
             decryptPermission={DecryptPermission.OnChainHistory}
             programs={['credits.aleo']}
             autoConnect
+            network={'mainnet' as WalletAdapterNetwork}
           >
             <WalletModalProvider>
               <ThemeProvider
