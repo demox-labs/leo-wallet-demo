@@ -71,11 +71,11 @@ const GettingStartedPage: NextPageWithLayout = () => {
           <br />
           <WalletMultiButton className="bg-[#154bf9]" />
         </Section>
-        <Section title="STEP 4 - FUND YOUR WALLET" bgColor="">
+        <Section title="STEP 4 - START TRANSACTING" bgColor="">
           &bull; Click on the button below to start your first transactions on
-          Miden <br /> <br />
+          Miden (remember to mint funds from the faucet first) <br /> <br />
           <a href={`${routes.transfer}`}>
-            <Button>Fund Your Wallet</Button>
+            <Button>Start transacting</Button>
           </a>
         </Section>
       </div>
