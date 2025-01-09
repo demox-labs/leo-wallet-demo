@@ -21,34 +21,9 @@ const menuItems = [
     href: routes.gettingStarted,
   },
   {
-    name: 'Sign',
-    icon: <ExchangeIcon />,
-    href: routes.sign,
-  },
-  {
-    name: 'Decrypt',
-    icon: <Unlocked />,
-    href: routes.decrypt,
-  },
-  {
-    name: 'Records',
-    icon: <FarmIcon />,
-    href: routes.records,
-  },
-  {
     name: 'Transfer',
     icon: <ChevronForward />,
     href: routes.transfer,
-  },
-  {
-    name: 'Execute',
-    icon: <OvenIcon />,
-    href: routes.execute,
-  },
-  {
-    name: 'Deploy',
-    icon: <Sun />,
-    href: routes.deploy,
   },
 ];
 

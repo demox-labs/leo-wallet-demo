@@ -3,7 +3,7 @@ import { NextSeo } from 'next-seo';
 import DashboardLayout from '@/layouts/dashboard/_dashboard';
 import Button from '@/components/ui/button';
 import routes from '@/config/routes';
-import { WalletMultiButton } from '@demox-labs/aleo-wallet-adapter-reactui';
+import { WalletMultiButton } from '@demox-labs/miden-wallet-adapter-reactui';
 
 type SectionProps = {
   title: string;
@@ -71,11 +71,11 @@ const GettingStartedPage: NextPageWithLayout = () => {
           <br />
           <WalletMultiButton className="bg-[#154bf9]" />
         </Section>
-        <Section title="STEP 4 - START SIGNING" bgColor="">
-          &bull; Click on the button below to start signing your first Aleo
-          messages! <br /> <br />
-          <a href={`${routes.sign}`}>
-            <Button>Start Signing</Button>
+        <Section title="STEP 4 - FUND YOUR WALLET" bgColor="">
+          &bull; Click on the button below to start your first transactions on
+          Miden <br /> <br />
+          <a href={`${routes.transfer}`}>
+            <Button>Fund Your Wallet</Button>
           </a>
         </Section>
       </div>

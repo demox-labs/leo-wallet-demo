@@ -14,10 +14,10 @@ import 'swiper/css';
 import '@/assets/css/scrollbar.css';
 import '@/assets/css/globals.css';
 import '@/assets/css/range-slider.css';
-import { LeoWalletAdapter } from '@demox-labs/aleo-wallet-adapter-leo';
-import { DecryptPermission } from '@demox-labs/aleo-wallet-adapter-base';
-import { WalletProvider } from '@demox-labs/aleo-wallet-adapter-react';
-import { WalletModalProvider } from '@demox-labs/aleo-wallet-adapter-reactui';
+import { TridentWalletAdapter } from '@demox-labs/miden-wallet-adapter-trident';
+import { DecryptPermission } from '@demox-labs/miden-wallet-adapter-base';
+import { WalletProvider } from '@demox-labs/miden-wallet-adapter-react';
+import { WalletModalProvider } from '@demox-labs/miden-wallet-adapter-reactui';
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
@@ -26,8 +26,8 @@ type AppPropsWithLayout = AppProps & {
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const wallets = useMemo(
     () => [
-      new LeoWalletAdapter({
-        appName: 'Leo Demo App',
+      new TridentWalletAdapter({
+        appName: 'Trident Demo App',
       }),
     ],
     []

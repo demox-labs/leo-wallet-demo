@@ -6,9 +6,9 @@ import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { useDrawer } from '@/components/drawer-views/context';
 import Sidebar from '@/layouts/dashboard/_sidebar';
 import React, { FC, useMemo } from 'react';
-import { WalletMultiButton } from '@demox-labs/aleo-wallet-adapter-reactui';
+import { WalletMultiButton } from '@demox-labs/miden-wallet-adapter-reactui';
 
-require('@demox-labs/aleo-wallet-adapter-reactui/dist/styles.css');
+require('@demox-labs/miden-wallet-adapter-reactui/dist/styles.css');
 
 function HeaderRightArea() {
   return (

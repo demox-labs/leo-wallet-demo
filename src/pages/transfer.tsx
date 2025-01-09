@@ -3,15 +3,15 @@ import type { NextPageWithLayout } from '@/types';
 import { NextSeo } from 'next-seo';
 import DashboardLayout from '@/layouts/dashboard/_dashboard';
 import Base from '@/components/ui/base';
-import { useWallet } from '@demox-labs/aleo-wallet-adapter-react';
-import { LeoWalletAdapter } from '@demox-labs/aleo-wallet-adapter-leo';
+import { useWallet } from '@demox-labs/miden-wallet-adapter-react';
+import { TridentWalletAdapter } from '@demox-labs/miden-wallet-adapter-trident';
 import { Check } from '@/components/icons/check';
 import Button from '@/components/ui/button';
 import {
   Transaction,
   WalletAdapterNetwork,
   WalletNotConnectedError,
-} from '@demox-labs/aleo-wallet-adapter-base';
+} from '@demox-labs/miden-wallet-adapter-base';
 
 const TransactionPage: NextPageWithLayout = () => {
   const { wallet, publicKey } = useWallet();
@@ -54,7 +54,7 @@ const TransactionPage: NextPageWithLayout = () => {
     );
 
     const txId =
-      (await (wallet?.adapter as LeoWalletAdapter).requestTransaction(
+      (await (wallet?.adapter as TridentWalletAdapter).requestTransaction(
         aleoTransaction
       )) || '';
     if (event.target?.elements[0]?.value) {
@@ -65,7 +65,7 @@ const TransactionPage: NextPageWithLayout = () => {
 
   const getTransactionStatus = async (txId: string) => {
     const status = await (
-      wallet?.adapter as LeoWalletAdapter
+      wallet?.adapter as TridentWalletAdapter
     ).transactionStatus(txId);
     setStatus(status);
   };

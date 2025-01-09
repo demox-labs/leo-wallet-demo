@@ -929,35 +929,43 @@
   resolved "https://registry.yarnpkg.com/@demox-labs/aleo-sdk/-/aleo-sdk-0.3.11.tgz#8b55f13826b851d612800621b82386e5a03daec1"
   integrity sha512-Oui3xdut759O8PWj1Xc0KC8dmJHmbWA1zRjPbVTnQ4xY+dq09UpjyvEqoVSRDrhbzqEr7IDpCfJnM5ZC1O+rYA==
 
-"@demox-labs/aleo-wallet-adapter-base@^0.0.20":
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/@demox-labs/aleo-wallet-adapter-base/-/aleo-wallet-adapter-base-0.0.20.tgz#b239f062ebbc5c22e8df028ea145ef838f8f8875"
-  integrity sha512-H7FNLew8dFbD3GxT/hUijHy7iEIf7YYR4cQQCz57rV7aEs3Zq0mc/N+Ku/PQcbPEQj6vUoFBtyhqNTXOw36kYw==
+"@demox-labs/miden-wallet-adapter-base@0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@demox-labs/miden-wallet-adapter-base/-/miden-wallet-adapter-base-0.0.0.tgz#6c0f871f31358daa46b18077622f571a1df54bbe"
+  integrity sha512-uXPu/1UEi52F8uJ6yqqx+A3BtlfIYh3GD1uUQl7SPm8fhvUTj5G7FXqNB1HXrSWlEfmjGx0Eb8EaK85uABj6aA==
   dependencies:
-    eventemitter3 "^4.0.7"
+    eventemitter3 "^5.0.1"
 
-"@demox-labs/aleo-wallet-adapter-leo@^0.0.19":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@demox-labs/aleo-wallet-adapter-leo/-/aleo-wallet-adapter-leo-0.0.19.tgz#c1812ad3b98bfbee4626be28172169627e31f4c0"
-  integrity sha512-6aPczdP785RNCfcQPltUWHBpWr6+YIoU8Jk+6gCw19AHc8UENq5WAIzTBR6ub2C3bPYBrGPNxqpNIxvLXHsuHA==
+"@demox-labs/miden-wallet-adapter-base@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@demox-labs/miden-wallet-adapter-base/-/miden-wallet-adapter-base-0.0.1.tgz#6eceb2f9449c815c1b28ee91653c4eaef3cb939c"
+  integrity sha512-kqrYZVWE8oC0M6s1q+2+paxoGoJvtD0I1IcMUqKtxa5VOqLjEoXP6+AjhIr9wE5N7D0WtMzqrnNQsqBbrlp8lA==
   dependencies:
-    "@demox-labs/aleo-wallet-adapter-base" "^0.0.20"
-    nanoid "^4.0.0"
+    eventemitter3 "^5.0.1"
 
-"@demox-labs/aleo-wallet-adapter-react@^0.0.19":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@demox-labs/aleo-wallet-adapter-react/-/aleo-wallet-adapter-react-0.0.19.tgz#e2e783b25a96d366828d3b9859be9650c2788106"
-  integrity sha512-np00dDXFXBA/okLyaHbyJfCsTgCr33ltBPy3L1+1TaL69c6WUuOCn5pNA6V+MM1DYWRUZmyNG4nbKPj8u3jhzQ==
+"@demox-labs/miden-wallet-adapter-react@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@demox-labs/miden-wallet-adapter-react/-/miden-wallet-adapter-react-0.0.1.tgz#e07ccacbee98e82a238b578bf65749428bbaf8aa"
+  integrity sha512-/PATkfe8XIvC+f9ic/MYM6b+kbFaGWuDCoBernhHBQYO4sIIZ6IhD8WFYo9QFXKvOXJ6fjtfw960O0tGePmBrw==
   dependencies:
-    "@demox-labs/aleo-wallet-adapter-base" "^0.0.20"
+    "@demox-labs/miden-wallet-adapter-base" "0.0.0"
+    react "^18.2.0"
 
-"@demox-labs/aleo-wallet-adapter-reactui@^0.0.31":
-  version "0.0.31"
-  resolved "https://registry.yarnpkg.com/@demox-labs/aleo-wallet-adapter-reactui/-/aleo-wallet-adapter-reactui-0.0.31.tgz#e7f5b4bfba39dc5695076c34a8773bfb087b2fdd"
-  integrity sha512-Qii4YvzIqLLS7+PY87z/+2y/n3ZAc3En9UEWA/nMm0WNL5nO30cExYDGDC7G+lQoHXqGKckF85vX5Tu+KKo7kQ==
+"@demox-labs/miden-wallet-adapter-reactui@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@demox-labs/miden-wallet-adapter-reactui/-/miden-wallet-adapter-reactui-0.0.1.tgz#93580face33d89d3b455fbeba17e4271eb4cc2f6"
+  integrity sha512-E2uks0wx3ZzUs1XNQh62EksyZVP9g0aY9Bk4BOk6HqcDQDXmmvq9bqn9I46momlc09tYIZygp6EWfk5/k+jpaQ==
   dependencies:
-    "@demox-labs/aleo-wallet-adapter-base" "^0.0.20"
-    "@demox-labs/aleo-wallet-adapter-react" "^0.0.19"
+    "@demox-labs/miden-wallet-adapter-base" "0.0.1"
+    "@demox-labs/miden-wallet-adapter-react" "0.0.1"
+
+"@demox-labs/miden-wallet-adapter-trident@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@demox-labs/miden-wallet-adapter-trident/-/miden-wallet-adapter-trident-0.0.1.tgz#4015d3c40ca9c3189e4ae11f7f0c28888df13c34"
+  integrity sha512-YC03mqdKC4nn4iqwHXhSr7iR2jPKkQ0SopczClzqgdIzEcfrdU5r+IIuWMCWU1GrYs2dgwx2gfM8KnAo1V5d+w==
+  dependencies:
+    "@demox-labs/miden-wallet-adapter-base" "0.0.1"
+    nanoid "^5.0.9"
 
 "@emotion/is-prop-valid@^0.8.2":
   version "0.8.8"
@@ -3382,10 +3390,15 @@ ethers@5.6.4:
     "@ethersproject/web" "5.6.0"
     "@ethersproject/wordlists" "5.6.0"
 
-eventemitter3@^4.0.1, eventemitter3@^4.0.7:
+eventemitter3@^4.0.1:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
+
+eventemitter3@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-5.0.1.tgz#53f5ffd0a492ac800721bb42c66b841de96423c4"
+  integrity sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==
 
 execa@^6.1.0:
   version "6.1.0"
@@ -4666,10 +4679,10 @@ nanoid@^3.1.30, nanoid@^3.3.4:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
   integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
 
-nanoid@^4.0.0:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-4.0.1.tgz#398d7ccfdbf9faf2231b2ca7e8fff5dbca6a509b"
-  integrity sha512-udKGtCCUafD3nQtJg9wBhRP3KMbPglUsgV5JVsXhvyBs/oefqb4sqMEhKBBgqZncYowu58p1prsZQBYvAj/Gww==
+nanoid@^5.0.9:
+  version "5.0.9"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-5.0.9.tgz#977dcbaac055430ce7b1e19cf0130cea91a20e50"
+  integrity sha512-Aooyr6MXU6HpvvWXKoVoXwKMs/KyVakWwg7xQfv5/S/RIgJMy0Ifa45H9qqYy7pTCszrHzP21Uk4PZq2HpEM8Q==
 
 natural-compare@^1.4.0:
   version "1.4.0"
