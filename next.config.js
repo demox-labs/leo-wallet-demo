@@ -39,6 +39,7 @@ module.exports = withPWA({
     Object.assign(experiments, {
       asyncWebAssembly: true,
       syncWebAssembly: true,
+      topLevelAwait: true,
     });
     config.experiments = experiments;
     const alias = config.resolve.alias || {};

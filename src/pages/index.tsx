@@ -52,8 +52,8 @@ const GettingStartedPage: NextPageWithLayout = () => {
           title="STEP 1 - GET A WALLET"
           bgColor="bg-white shadow-card dark:bg-light-dark"
         >
-          &bull; Download and Install an Aleo compatible wallet. We recommend{' '}
-          <a href="https://demoxlabs.xyz">Leo Wallet</a>
+          &bull; Download and Install an Miden compatible wallet. We recommend{' '}
+          <a href="https://demoxlabs.xyz">Trident Wallet</a>
         </Section>
         <Section title="STEP 2 - CREATE A NEW WALLET ACCOUNT" bgColor="">
           &bull; Once installed - click on &quot;Create a new wallet&quot;{' '}
@@ -66,16 +66,16 @@ const GettingStartedPage: NextPageWithLayout = () => {
           title="STEP 3 - CONNECT YOUR WALLET"
           bgColor="bg-white shadow-card dark:bg-light-dark"
         >
-          &bull; Now that you have your wallet setup with funds, connect it to
-          our site by clicking the button below <br />
+          &bull; Now that you have your wallet setup, connect it to our site by
+          clicking the button below <br />
           <br />
           <WalletMultiButton className="bg-[#154bf9]" />
         </Section>
-        <Section title="STEP 4 - START TRANSACTING" bgColor="">
-          &bull; Click on the button below to start your first transactions on
-          Miden (remember to mint funds from the faucet first) <br /> <br />
-          <a href={`${routes.transfer}`}>
-            <Button>Start transacting</Button>
+        <Section title="STEP 4 - FUND YOUR WALLET" bgColor="">
+          &bull; Click on the button below to mint funds from the faucet <br />{' '}
+          <br />
+          <a href={`${routes.mint}`}>
+            <Button>Fund Wallet</Button>
           </a>
         </Section>
       </div>

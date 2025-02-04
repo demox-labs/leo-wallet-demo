@@ -12,45 +12,22 @@ import {
   WalletNotConnectedError,
 } from '@demox-labs/miden-wallet-adapter-base';
 
-const TransactionPage: NextPageWithLayout = () => {
+const MintPage: NextPageWithLayout = () => {
   const { wallet, publicKey } = useWallet();
 
   let [toAddress, setToAddress] = useState('');
   let [amount, setAmount] = useState<number | undefined>(undefined);
   let [faucetId, setFaucetId] = useState<string>('');
-  let [sharePrivately, setSharePrivately] = useState<boolean>(false);
-  let [recallBlocks, setRecallBlocks] = useState<number | undefined>();
-
-  let [transactionId, setTransactionId] = useState<string | undefined>(
-    undefined
-  );
-  //let [status, setStatus] = useState<string | undefined>();
-
-  useEffect(() => {
-    let intervalId: NodeJS.Timeout | undefined;
-
-    if (transactionId) {
-      intervalId = setInterval(() => {
-        getTransactionStatus(transactionId!);
-      }, 1000);
-    }
-
-    return () => {
-      if (intervalId) {
-        clearInterval(intervalId);
-      }
-    };
-  }, [transactionId]);
+  let [mintPrivately, setMintPrivately] = useState<boolean>(false);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     if (!publicKey) throw new WalletNotConnectedError();
 
-    const midenTransaction = Transaction.createSendTransaction(
+    const midenTransaction = Transaction.createMintTransaction(
       publicKey,
-      toAddress,
       faucetId,
-      sharePrivately ? 'private' : 'public',
+      mintPrivately ? 'private' : 'public',
       amount!
     );
 
@@ -61,42 +38,26 @@ const TransactionPage: NextPageWithLayout = () => {
     if (event.target?.elements[0]?.value) {
       event.target.elements[0].value = '';
     }
-    setTransactionId(txId);
-  };
-
-  const getTransactionStatus = async (txId: string) => {
-    // const status = await (
-    //   wallet?.adapter as TridentWalletAdapter
-    // ).transactionStatus(txId);
-    // setStatus(status);
   };
 
   const handleToAddressChange = (event: any) => {
-    setTransactionId(undefined);
     event.preventDefault();
     setToAddress(event.currentTarget.value);
   };
   const handleFaucetIdChange = (event: any) => {
-    setTransactionId(undefined);
     event.preventDefault();
     setFaucetId(event.currentTarget.value);
   };
   const handleAmountChange = (event: any) => {
-    setTransactionId(undefined);
     event.preventDefault();
     setAmount(event.currentTarget.value);
-  };
-  const handleRecallBlocksChange = (event: any) => {
-    setTransactionId(undefined);
-    event.preventDefault();
-    setRecallBlocks(event.currentTarget.value);
   };
 
   return (
     <>
       <NextSeo
-        title="Trident Wallet Request Transfer"
-        description="Request Transfer from the Trident Wallet"
+        title="Trident Wallet Request Mint"
+        description="Request Mint from the Trident Wallet"
       />
       <Base>
         <form
@@ -110,7 +71,7 @@ const TransactionPage: NextPageWithLayout = () => {
           <label className="flex w-full items-center py-4">
             <input
               className="h-11 w-full appearance-none rounded-lg border-2 border-gray-200 bg-transparent py-1 text-sm tracking-tighter text-gray-900 outline-none transition-all placeholder:text-gray-600 focus:border-gray-900 ltr:pr-5 ltr:pl-10 rtl:pr-10 dark:border-gray-600 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-500"
-              placeholder="To address: ie, 0x0b8a174d47e79b1000088ad423474e"
+              placeholder="Recipient address: ie, 0x0b8a174d47e79b1000088ad423474e"
               autoComplete="off"
               onChange={(event: FormEvent<Element>) =>
                 handleToAddressChange(event)
@@ -149,27 +110,13 @@ const TransactionPage: NextPageWithLayout = () => {
               <Check className="h-4 w-4" />
             </span>
           </label>
-          <label className="flex w-full items-center py-4">
-            <input
-              className="h-11 w-full appearance-none rounded-lg border-2 border-gray-200 bg-transparent py-1 text-sm tracking-tighter text-gray-900 outline-none transition-all placeholder:text-gray-600 focus:border-gray-900 ltr:pr-5 ltr:pl-10 rtl:pr-10 dark:border-gray-600 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-500"
-              placeholder="Blocks before note can be recalled: ie, 10"
-              autoComplete="off"
-              onChange={(event: FormEvent<Element>) =>
-                handleRecallBlocksChange(event)
-              }
-              value={recallBlocks}
-            />
-            <span className="pointer-events-none absolute flex h-full w-8 cursor-pointer items-center justify-center text-gray-600 hover:text-gray-900 ltr:left-0 ltr:pl-2 rtl:right-0 rtl:pr-2 dark:text-gray-500 sm:ltr:pl-3 sm:rtl:pr-3">
-              <Check className="h-4 w-4" />
-            </span>
-          </label>
           <label className="flex items-center py-4">
-            <span className="mr-8 text-sm text-white">Share Privately</span>
+            <span className="mr-8 text-sm text-white">Mint Privately</span>
             <input
               type="checkbox"
               className="h-4 w-4 rounded border-none text-gray-700 transition duration-150 ease-in-out"
-              onChange={() => setSharePrivately(!sharePrivately)}
-              checked={sharePrivately}
+              onChange={() => setMintPrivately(!mintPrivately)}
+              checked={mintPrivately}
             />
           </label>
           <div className="flex items-center justify-center">
@@ -183,20 +130,13 @@ const TransactionPage: NextPageWithLayout = () => {
             </Button>
           </div>
         </form>
-        {transactionId && (
-          <div className="mt-5 inline-flex w-full items-center rounded-full bg-white shadow-card dark:bg-light-dark xl:mt-6">
-            <div className="inline-flex h-full shrink-0 grow-0 items-center rounded-full px-4 text-xs text-white sm:text-sm">
-              {/* {`Transaction status: ${status}`} */}
-            </div>
-          </div>
-        )}
       </Base>
     </>
   );
 };
 
-TransactionPage.getLayout = function getLayout(page) {
+MintPage.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>;
 };
 
-export default TransactionPage;
+export default MintPage;

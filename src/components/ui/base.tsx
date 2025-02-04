@@ -17,16 +17,8 @@ const Listbox = dynamic(() => import('@/components/ui/list-box'));
 
 const baseMenu = [
   {
-    name: 'Sign',
-    value: routes.sign,
-  },
-  {
-    name: 'Decrypt',
-    value: routes.decrypt,
-  },
-  {
-    name: 'Records',
-    value: routes.records,
+    name: 'Mint',
+    value: routes.mint,
   },
   {
     name: 'Transfer',
@@ -35,10 +27,6 @@ const baseMenu = [
   {
     name: 'Execute',
     value: routes.execute,
-  },
-  {
-    name: 'Deploy',
-    value: routes.deploy,
   },
 ];
 

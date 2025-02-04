@@ -1,11 +1,8 @@
 const routes = {
   gettingStarted: '/',
-  sign: '/sign',
-  decrypt: '/decrypt',
-  records: '/records',
+  mint: '/mint',
   transfer: '/transfer',
   execute: '/execute',
-  deploy: '/deploy',
 };
 
 export default routes;

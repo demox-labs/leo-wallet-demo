@@ -7,10 +7,7 @@ import routes from '@/config/routes';
 import { useDrawer } from '@/components/drawer-views/context';
 import { ChevronForward } from '@/components/icons/chevron-forward';
 import { HomeIcon } from '@/components/icons/home';
-import { FarmIcon } from '@/components/icons/farm';
-import { ExchangeIcon } from '@/components/icons/exchange';
 import { Close } from '@/components/icons/close';
-import { Unlocked } from '@/components/icons/unlocked';
 import { OvenIcon } from '@/components/icons/oven';
 import { Sun } from '@/components/icons/sun';
 
@@ -21,9 +18,19 @@ const menuItems = [
     href: routes.gettingStarted,
   },
   {
+    name: 'Mint',
+    icon: <Sun />,
+    href: routes.mint,
+  },
+  {
     name: 'Transfer',
     icon: <ChevronForward />,
     href: routes.transfer,
+  },
+  {
+    name: 'Execute',
+    icon: <OvenIcon />,
+    href: routes.execute,
   },
 ];
 
