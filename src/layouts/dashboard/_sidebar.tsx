@@ -23,15 +23,15 @@ const menuItems = [
     href: routes.mint,
   },
   {
-    name: 'Transfer',
+    name: 'Send',
     icon: <ChevronForward />,
-    href: routes.transfer,
+    href: routes.send,
   },
-  {
-    name: 'Execute',
-    icon: <OvenIcon />,
-    href: routes.execute,
-  },
+  // {
+  //   name: 'Execute',
+  //   icon: <OvenIcon />,
+  //   href: routes.execute,
+  // },
 ];
 
 type SidebarProps = {

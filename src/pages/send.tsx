@@ -8,11 +8,11 @@ import { TridentWalletAdapter } from '@demox-labs/miden-wallet-adapter-trident';
 import { Check } from '@/components/icons/check';
 import Button from '@/components/ui/button';
 import {
-  Transaction,
+  SendTransaction,
   WalletNotConnectedError,
 } from '@demox-labs/miden-wallet-adapter-base';
 
-const TransactionPage: NextPageWithLayout = () => {
+const SendPage: NextPageWithLayout = () => {
   const { wallet, publicKey } = useWallet();
 
   let [toAddress, setToAddress] = useState('');
@@ -46,7 +46,7 @@ const TransactionPage: NextPageWithLayout = () => {
     event.preventDefault();
     if (!publicKey) throw new WalletNotConnectedError();
 
-    const midenTransaction = Transaction.createSendTransaction(
+    const midenTransaction = new SendTransaction(
       publicKey,
       toAddress,
       faucetId,
@@ -55,7 +55,7 @@ const TransactionPage: NextPageWithLayout = () => {
     );
 
     const txId =
-      (await (wallet?.adapter as TridentWalletAdapter).requestTransaction(
+      (await (wallet?.adapter as TridentWalletAdapter).requestSend(
         midenTransaction
       )) || '';
     if (event.target?.elements[0]?.value) {
@@ -95,8 +95,8 @@ const TransactionPage: NextPageWithLayout = () => {
   return (
     <>
       <NextSeo
-        title="Trident Wallet Request Transfer"
-        description="Request Transfer from the Trident Wallet"
+        title="Trident Wallet Request Send"
+        description="Request Send from the Trident Wallet"
       />
       <Base>
         <form
@@ -195,8 +195,8 @@ const TransactionPage: NextPageWithLayout = () => {
   );
 };
 
-TransactionPage.getLayout = function getLayout(page) {
+SendPage.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>;
 };
 
-export default TransactionPage;
+export default SendPage;

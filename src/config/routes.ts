@@ -1,7 +1,7 @@
 const routes = {
   gettingStarted: '/',
   mint: '/mint',
-  transfer: '/transfer',
+  send: '/send',
   execute: '/execute',
 };
 

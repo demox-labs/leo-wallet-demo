@@ -16,6 +16,7 @@ import { TridentWalletAdapter } from '@demox-labs/miden-wallet-adapter-trident';
 import { DecryptPermission } from '@demox-labs/miden-wallet-adapter-base';
 import { WalletProvider } from '@demox-labs/miden-wallet-adapter-react';
 import { WalletModalProvider } from '@demox-labs/miden-wallet-adapter-reactui';
+import { MidenSdkProvider } from '@/lib/hooks/use-miden-sdk';
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
@@ -55,9 +56,11 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
                 enableSystem={false}
                 defaultTheme="dark"
               >
-                {getLayout(<Component {...pageProps} />)}
-                <ModalsContainer />
-                <DrawersContainer />
+                <MidenSdkProvider>
+                  {getLayout(<Component {...pageProps} />)}
+                  <ModalsContainer />
+                  <DrawersContainer />
+                </MidenSdkProvider>
               </ThemeProvider>
             </WalletModalProvider>
           </WalletProvider>

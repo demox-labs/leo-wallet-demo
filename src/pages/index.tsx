@@ -72,8 +72,8 @@ const GettingStartedPage: NextPageWithLayout = () => {
           <WalletMultiButton className="bg-[#154bf9]" />
         </Section>
         <Section title="STEP 4 - FUND YOUR WALLET" bgColor="">
-          &bull; Click on the button below to mint funds from the faucet <br />{' '}
-          <br />
+          &bull; Click on the button below to mint funds for your wallet
+          <br /> <br />
           <a href={`${routes.mint}`}>
             <Button>Fund Wallet</Button>
           </a>

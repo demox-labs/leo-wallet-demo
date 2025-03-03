@@ -9,41 +9,44 @@ import { Check } from '@/components/icons/check';
 import Button from '@/components/ui/button';
 import { useLocalStorage } from '@/lib/hooks/use-local-storage';
 import {
+  MidenCustomTransaction,
   Transaction,
   WalletNotConnectedError,
 } from '@demox-labs/miden-wallet-adapter-base';
-import {
-  Account,
-  AccountId,
-  AccountStorageMode,
-  NoteType,
-  WebClient,
-} from '@demox-labs/miden-sdk';
+import { useMidenSdk } from '@/lib/hooks/use-miden-sdk';
 
-const MintPage: NextPageWithLayout = () => {
+const ExecutePage: NextPageWithLayout = () => {
   const { wallet, publicKey } = useWallet();
-  const webClient = new WebClient();
-  const [faucetId] = useLocalStorage('miden_faucet_id', '0x29b86f9443ad907a');
+  const { Miden } = useMidenSdk();
 
-  let [amount, setAmount] = useState<number | undefined>(undefined);
+  let [amount, setAmount] = useState<number | undefined>(100);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     if (!publicKey) throw new WalletNotConnectedError();
 
-    await webClient.create_client('http://localhost:57291');
-    const accountId = AccountId.from_hex(publicKey);
-    await webClient.fetch_and_cache_account_auth_by_pub_key(accountId);
+    const faucetId = Miden.AccountId.from_hex(
+      '0x6f2c28f3a32575200000457d2cfec3'
+    );
+    const accountId = Miden.AccountId.from_hex(publicKey);
     const noteType =
-      event.target.name === 'private' ? NoteType.private() : NoteType.public();
-    // const transactionRequest = await webClient.create_mint_transaction_request(
+      event.target.name === 'private'
+        ? Miden.NoteType.private()
+        : Miden.NoteType.public();
+    // const transactionRequest = await client.create_send_transaction_request(
     //   accountId,
-    //   AccountId.from_hex(faucetId!),
+    //   faucetId,
     //   noteType,
     //   BigInt(amount!)
     // );
-    // const midenTransaction =
-    //   Transaction.createCustomTransaction(transactionRequest);
+    // const midenTransaction = Transaction.createCustomTransaction(
+    //   publicKey,
+    //   transactionRequest
+    // );
+    // const txRequestBytes = transactionRequest.serialize();
+    // const base64 = Buffer.from(txRequestBytes).toString('base64');
+    // (midenTransaction.payload as MidenCustomTransaction).transactionRequest =
+    //   base64;
 
     // const txId =
     //   (await (wallet?.adapter as TridentWalletAdapter).requestTransaction(
@@ -112,8 +115,8 @@ const MintPage: NextPageWithLayout = () => {
   );
 };
 
-MintPage.getLayout = function getLayout(page) {
+ExecutePage.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>;
 };
 
-export default MintPage;
+export default ExecutePage;

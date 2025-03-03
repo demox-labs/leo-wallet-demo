@@ -21,13 +21,13 @@ const baseMenu = [
     value: routes.mint,
   },
   {
-    name: 'Transfer',
-    value: routes.transfer,
+    name: 'Send',
+    value: routes.send,
   },
-  {
-    name: 'Execute',
-    value: routes.execute,
-  },
+  // {
+  //   name: 'Execute',
+  //   value: routes.execute,
+  // },
 ];
 
 function ActiveNavLink({ href, title, isActive, className }: any) {
