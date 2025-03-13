@@ -12,7 +12,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@demox-labs/miden-sdk": "^0.7.1",
+    "@demox-labs/miden-sdk": "^0.7.6",
     "@demox-labs/miden-wallet-adapter-base": "^0.1.0",
     "@demox-labs/miden-wallet-adapter-react": "^0.1.0",
     "@demox-labs/miden-wallet-adapter-reactui": "^0.1.0",

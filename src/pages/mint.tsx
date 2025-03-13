@@ -1,96 +1,119 @@
-import {
-  useState,
-  FormEvent,
-  SyntheticEvent,
-  useEffect,
-  useCallback,
-} from 'react';
-import type { NextPageWithLayout } from '@/types';
-import { NextSeo } from 'next-seo';
-import DashboardLayout from '@/layouts/dashboard/_dashboard';
-import Base from '@/components/ui/base';
-import { useWallet } from '@demox-labs/miden-wallet-adapter-react';
-import { TridentWalletAdapter } from '@demox-labs/miden-wallet-adapter-trident';
 import { Check } from '@/components/icons/check';
+import Base from '@/components/ui/base';
 import Button from '@/components/ui/button';
+import DashboardLayout from '@/layouts/dashboard/_dashboard';
+import { useMidenSdk } from '@/lib/hooks/use-miden-sdk';
+import type { NextPageWithLayout } from '@/types';
 import {
-  MidenCustomTransaction,
   Transaction,
   WalletNotConnectedError,
 } from '@demox-labs/miden-wallet-adapter-base';
-import { useMidenSdk } from '@/lib/hooks/use-miden-sdk';
-import { set } from 'lodash';
+import { useWallet } from '@demox-labs/miden-wallet-adapter-react';
+import { TridentWalletAdapter } from '@demox-labs/miden-wallet-adapter-trident';
+import { NextSeo } from 'next-seo';
+import {
+  FormEvent,
+  SyntheticEvent,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
+
+interface FaucetMetadata {
+  id: string;
+  asset_amount_options: number[];
+}
 
 const MintPage: NextPageWithLayout = () => {
   const { wallet, publicKey } = useWallet();
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState<string | undefined>();
+  const [faucetState, setFaucetState] = useState<FaucetMetadata | undefined>();
 
-  const { client, Miden, faucetId, createFaucet } = useMidenSdk();
+  const { client, Miden } = useMidenSdk();
 
   let [amount, setAmount] = useState<number | undefined>(100);
-  let [sharePrivately, setSharePrivately] = useState<boolean>(false);
+
+  const fetchFaucetState = useCallback(async () => {
+    fetch('https://faucet.testnet.miden.io/get_metadata')
+      .then((response) => response.json())
+      .then((data) => {
+        setFaucetState(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching faucet metadata:', error);
+      });
+  }, [setFaucetState]);
 
   useEffect(() => {
-    if (faucetId) {
+    if (faucetState) {
       return;
     }
-    createFaucet();
-  }, [createFaucet, faucetId]);
+    fetchFaucetState();
+  }, [fetchFaucetState, faucetState]);
+
+  async function requestNote(isPrivateNote: boolean, amount: number) {
+    try {
+      const response = await fetch(
+        'https://faucet.testnet.miden.io/get_tokens',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            account_id: publicKey,
+            is_private_note: isPrivateNote,
+            asset_amount: amount,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      return response;
+    } catch (error) {
+      console.error('Error:', error);
+      // errorMessage.textContent = 'Failed to receive tokens. Please try again.';
+    }
+  }
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     if (!publicKey) throw new WalletNotConnectedError();
-    if (!Miden || !client || !faucetId) return;
+    if (!Miden || !client) return;
     setIsLoading(true);
 
-    await client.fetch_and_cache_account_auth_by_pub_key(faucetId);
-    const accountId = Miden.AccountId.from_hex(publicKey);
-    const noteType =
-      event.target.name === 'private'
-        ? Miden.NoteType.private()
-        : Miden.NoteType.public();
-    setStatus('Minting note...');
-    const mintTxn = await client.new_mint_transaction(
-      accountId,
-      faucetId,
-      noteType,
-      BigInt(amount!)
-    );
-    setStatus('Generating transaction...');
-    const noteId = mintTxn.created_notes().notes()[0].id();
-    const noteIdString = noteId.to_string();
-    const noteIdArgsArray = new Miden.NoteIdAndArgsArray([
-      new Miden.NoteIdAndArgs(noteId),
-    ]);
-    const consumeRequest = new Miden.TransactionRequestBuilder()
-      .with_authenticated_input_notes(noteIdArgsArray)
-      .build();
+    const isPrivateNote = event.target.name === 'private';
+    const noteResponse = await requestNote(isPrivateNote, amount!);
 
+    const noteId = noteResponse!.headers.get('Note-Id');
     let inputNotes: Uint8Array[] = [];
-    if (sharePrivately) {
-      setStatus('Exporting note...');
-      const noteBytes = await client.export_note(noteIdString, 'Partial');
-      const uint8Array = new Uint8Array(noteBytes);
+    if (isPrivateNote) {
+      const noteBuffer = await noteResponse!.arrayBuffer();
+      const uint8Array = new Uint8Array(noteBuffer);
       inputNotes = [uint8Array];
     }
-    const midenTransaction = Transaction.createCustomTransaction(
-      publicKey,
-      consumeRequest,
-      [noteIdString],
-      inputNotes
-    );
 
-    setStatus('Submitting transaction request...');
-    const txId =
-      (await (wallet?.adapter as TridentWalletAdapter).requestTransaction(
-        midenTransaction
-      )) || '';
+    // const midenTransaction = Transaction.createCustomTransaction(
+    //   publicKey,
+    //   consumeRequest,
+    //   [noteId!],
+    //   inputNotes
+    // );
+
+    // setStatus('Submitting transaction request...');
+    // const txId =
+    //   (await (wallet?.adapter as TridentWalletAdapter).requestTransaction(
+    //     midenTransaction
+    //   )) || '';
     setIsLoading(false);
-    setStatus(`Transaction ID: ${txId}`);
-    if (event.target?.elements[0]?.value) {
-      event.target.elements[0].value = '';
-    }
+    // setStatus(`Transaction ID: ${txId}`);
+    // if (event.target?.elements[0]?.value) {
+    //   event.target.elements[0].value = '';
+    // }
   };
 
   const handleAmountChange = (event: any) => {
@@ -106,9 +129,7 @@ const MintPage: NextPageWithLayout = () => {
       />
       <Base>
         <div className="inline-flex h-full shrink-0 grow-0 items-center rounded-full text-xs text-white sm:text-sm">
-          {faucetId
-            ? 'Faucet ID: ' + faucetId.to_string()
-            : 'Creating faucet...'}
+          {`Mint from Miden Faucet${faucetState ? `: ${faucetState.id}` : ''}`}
         </div>
         <form
           className="relative flex w-full flex-col rounded-full md:w-auto"
@@ -119,39 +140,42 @@ const MintPage: NextPageWithLayout = () => {
           }}
         >
           <label className="flex w-full items-center py-4">
-            <input
+            <select
               className="h-11 w-full appearance-none rounded-lg border-2 border-gray-200 bg-transparent py-1 text-sm tracking-tighter text-gray-900 outline-none transition-all placeholder:text-gray-600 focus:border-gray-900 ltr:pr-5 ltr:pl-10 rtl:pr-10 dark:border-gray-600 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-500"
-              placeholder="Amount: ie, 100"
               autoComplete="off"
               onChange={(event: FormEvent<Element>) =>
                 handleAmountChange(event)
               }
               value={amount}
-            />
-            <span className="pointer-events-none absolute flex h-full w-8 cursor-pointer items-center justify-center text-gray-600 hover:text-gray-900 ltr:left-0 ltr:pl-2 rtl:right-0 rtl:pr-2 dark:text-gray-500 sm:ltr:pl-3 sm:rtl:pr-3">
-              <Check className="h-4 w-4" />
-            </span>
+            >
+              {faucetState?.asset_amount_options.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
             <Button
-              disabled={!publicKey || !amount || !Miden || !client || !faucetId}
+              disabled={!publicKey || !amount || !Miden || !client}
               name="public"
               type="submit"
               color="white"
               className="ml-4 shadow-card dark:bg-gray-700 md:h-10 md:px-5 xl:h-12 xl:px-7"
               isLoading={isLoading}
             >
-              {!publicKey
-                ? 'Connect Your Wallet'
-                : `Mint ${sharePrivately ? 'Private' : 'Public'} Note`}
+              {!publicKey ? 'Connect Your Wallet' : 'Mint Public Note'}
             </Button>
-          </label>
-          <label className="flex items-center py-4">
-            <span className="mr-8 text-sm text-white">Share Privately</span>
-            <input
-              type="checkbox"
-              className="h-4 w-4 rounded border-none text-gray-700 transition duration-150 ease-in-out"
-              onChange={() => setSharePrivately(!sharePrivately)}
-              checked={sharePrivately}
-            />
+            {publicKey && (
+              <Button
+                disabled={!publicKey || !amount || !Miden || !client}
+                name="private"
+                type="submit"
+                color="white"
+                className="ml-4 shadow-card dark:bg-gray-700 md:h-10 md:px-5 xl:h-12 xl:px-7"
+                isLoading={isLoading}
+              >
+                Mint Private Note
+              </Button>
+            )}
           </label>
         </form>
         {status && (

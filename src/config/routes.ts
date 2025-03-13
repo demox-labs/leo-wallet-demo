@@ -2,7 +2,7 @@ const routes = {
   gettingStarted: '/',
   mint: '/mint',
   send: '/send',
-  execute: '/execute',
+  faucet: '/faucet',
 };
 
 export default routes;

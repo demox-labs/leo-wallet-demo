@@ -24,10 +24,10 @@ const baseMenu = [
     name: 'Send',
     value: routes.send,
   },
-  // {
-  //   name: 'Execute',
-  //   value: routes.execute,
-  // },
+  {
+    name: 'Faucet',
+    value: routes.faucet,
+  },
 ];
 
 function ActiveNavLink({ href, title, isActive, className }: any) {

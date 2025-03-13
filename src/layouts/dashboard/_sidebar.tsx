@@ -27,11 +27,11 @@ const menuItems = [
     icon: <ChevronForward />,
     href: routes.send,
   },
-  // {
-  //   name: 'Execute',
-  //   icon: <OvenIcon />,
-  //   href: routes.execute,
-  // },
+  {
+    name: 'Create Faucet',
+    icon: <OvenIcon />,
+    href: routes.faucet,
+  },
 ];
 
 type SidebarProps = {
