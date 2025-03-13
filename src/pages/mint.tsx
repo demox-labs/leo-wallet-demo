@@ -1,10 +1,4 @@
-import {
-  useState,
-  FormEvent,
-  SyntheticEvent,
-  useEffect,
-  useCallback,
-} from 'react';
+import { useState, FormEvent, SyntheticEvent, useEffect } from 'react';
 import type { NextPageWithLayout } from '@/types';
 import { NextSeo } from 'next-seo';
 import DashboardLayout from '@/layouts/dashboard/_dashboard';
@@ -14,12 +8,10 @@ import { TridentWalletAdapter } from '@demox-labs/miden-wallet-adapter-trident';
 import { Check } from '@/components/icons/check';
 import Button from '@/components/ui/button';
 import {
-  MidenCustomTransaction,
   Transaction,
   WalletNotConnectedError,
 } from '@demox-labs/miden-wallet-adapter-base';
 import { useMidenSdk } from '@/lib/hooks/use-miden-sdk';
-import { set } from 'lodash';
 
 const MintPage: NextPageWithLayout = () => {
   const { wallet, publicKey } = useWallet();
