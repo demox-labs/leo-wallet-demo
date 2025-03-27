@@ -41,7 +41,7 @@ const GettingStartedPage: NextPageWithLayout = () => {
   return (
     <>
       <NextSeo
-        title="Triden Wallet | Getting Started"
+        title="Trident Wallet | Getting Started"
         description="How to get started using the Trident Wallet"
       />
       <div className="mx-auto w-full px-4 pt-8 pb-14 sm:px-6 sm:pb-20 sm:pt-12 lg:px-8 xl:px-10 2xl:px-0">
@@ -52,7 +52,7 @@ const GettingStartedPage: NextPageWithLayout = () => {
           title="STEP 1 - GET A WALLET"
           bgColor="bg-white shadow-card dark:bg-light-dark"
         >
-          &bull; Download and Install an Miden compatible wallet. We recommend{' '}
+          &bull; Download and install a Miden-compatible wallet. We recommend{' '}
           <a href="https://demoxlabs.xyz">Trident Wallet</a>
         </Section>
         <Section title="STEP 2 - CREATE A NEW WALLET ACCOUNT" bgColor="">

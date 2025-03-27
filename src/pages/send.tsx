@@ -110,7 +110,7 @@ const SendPage: NextPageWithLayout = () => {
           <label className="flex w-full items-center py-4">
             <input
               className="h-11 w-full appearance-none rounded-lg border-2 border-gray-200 bg-transparent py-1 text-sm tracking-tighter text-gray-900 outline-none transition-all placeholder:text-gray-600 focus:border-gray-900 ltr:pr-5 ltr:pl-10 rtl:pr-10 dark:border-gray-600 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-500"
-              placeholder="To address: ie, 0x0b8a174d47e79b1000088ad423474e"
+              placeholder="To address (e.g., 0x0b8a174d47e79b1000088ad423474e)"
               autoComplete="off"
               onChange={(event: FormEvent<Element>) =>
                 handleToAddressChange(event)
@@ -124,7 +124,7 @@ const SendPage: NextPageWithLayout = () => {
           <label className="flex w-full items-center py-4">
             <input
               className="h-11 w-full appearance-none rounded-lg border-2 border-gray-200 bg-transparent py-1 text-sm tracking-tighter text-gray-900 outline-none transition-all placeholder:text-gray-600 focus:border-gray-900 ltr:pr-5 ltr:pl-10 rtl:pr-10 dark:border-gray-600 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-500"
-              placeholder="Faucet Id: 0xe727df7d6b3c6220000054d5f6b3b4"
+              placeholder="Faucet ID (e.g., 0xe727df7d6b3c6220000054d5f6b3b4)"
               autoComplete="off"
               onChange={(event: FormEvent<Element>) =>
                 handleFaucetIdChange(event)
@@ -138,7 +138,7 @@ const SendPage: NextPageWithLayout = () => {
           <label className="flex w-full items-center py-4">
             <input
               className="h-11 w-full appearance-none rounded-lg border-2 border-gray-200 bg-transparent py-1 text-sm tracking-tighter text-gray-900 outline-none transition-all placeholder:text-gray-600 focus:border-gray-900 ltr:pr-5 ltr:pl-10 rtl:pr-10 dark:border-gray-600 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-500"
-              placeholder="Amount: ie, 101"
+              placeholder="Amount (e.g., 101)"
               autoComplete="off"
               onChange={(event: FormEvent<Element>) =>
                 handleAmountChange(event)
@@ -152,7 +152,7 @@ const SendPage: NextPageWithLayout = () => {
           <label className="flex w-full items-center py-4">
             <input
               className="h-11 w-full appearance-none rounded-lg border-2 border-gray-200 bg-transparent py-1 text-sm tracking-tighter text-gray-900 outline-none transition-all placeholder:text-gray-600 focus:border-gray-900 ltr:pr-5 ltr:pl-10 rtl:pr-10 dark:border-gray-600 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-500"
-              placeholder="Blocks before note can be recalled: ie, 10"
+              placeholder="Blocks before note can be recalled (e.g., 10)"
               autoComplete="off"
               onChange={(event: FormEvent<Element>) =>
                 handleRecallBlocksChange(event)
