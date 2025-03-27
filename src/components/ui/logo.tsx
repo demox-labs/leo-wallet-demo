@@ -12,16 +12,16 @@ const Logo: React.FC<React.SVGAttributes<{}>> = (props) => {
 
   return (
     <AnchorLink
-      href="https://leo.app"
+      href="https://www.leo.app/miden"
       className="flex w-28 outline-none sm:w-32 4xl:w-36"
       {...props}
     >
       <span className="relative flex overflow-hidden">
         {isMounted && isDarkMode && (
-          <Image src={logo} alt="Leo Wallet" priority />
+          <Image src={logo} alt="Trident Wallet" priority />
         )}
         {isMounted && !isDarkMode && (
-          <Image src={logo} alt="Leo Wallet" priority />
+          <Image src={logo} alt="Trident Wallet" priority />
         )}
       </span>
     </AnchorLink>
