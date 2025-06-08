@@ -6,6 +6,7 @@ const routes = {
   transfer: '/transfer',
   execute: '/execute',
   deploy: '/deploy',
+  transitionViewKey: '/transition-view-key',
 };
 
 export default routes;

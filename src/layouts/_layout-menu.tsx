@@ -23,6 +23,7 @@ const MenuLinks = [
   { name: 'Records', href: '/records' },
   { name: 'Execute', href: '/execute' },
   { name: 'Deploy', href: '/deploy' },
+  { name: 'Transition View Key', href: '/transition-view-key' },
 ];
 
 export function MenuItems() {

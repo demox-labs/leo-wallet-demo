@@ -13,7 +13,7 @@ import { Close } from '@/components/icons/close';
 import { Unlocked } from '@/components/icons/unlocked';
 import { OvenIcon } from '@/components/icons/oven';
 import { Sun } from '@/components/icons/sun';
-
+import { SearchIcon } from '@/components/icons/search';
 const menuItems = [
   {
     name: 'Getting Started',
@@ -49,6 +49,11 @@ const menuItems = [
     name: 'Deploy',
     icon: <Sun />,
     href: routes.deploy,
+  },
+  {
+    name: 'Transition View Key',
+    icon: <SearchIcon />,
+    href: routes.transitionViewKey,
   },
 ];
 
